@@ -37,7 +37,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* font-size: 14px; */
     margin: 0 auto;
     padding: 0;
     color: #000000; /* Black text */
@@ -170,7 +169,7 @@ body {
 .nav-brand a {
     color: #FF1493; /* Pink logo */
     font-family: 'Bangers', cursive;
-    font-size: xx-large;  /* Smaller font for mobile */
+    font-size: 3rem !important;
     padding: 5px;
     font-weight: bold;
     text-transform: uppercase;
@@ -185,9 +184,7 @@ body {
     border: #ffffff 5px solid;
 }
 .nav-brand {
-    font-size: xx-large;
     display: flex;
-    /* padding: 0%; */
     color: #FF1493;
     text-align: center;
     
@@ -198,7 +195,6 @@ body {
    display: none;
     flex-direction: column;
     gap: 0;
-    /* max-width: 100%; */
     background: #00FFFF; /* Cyan menu */
     padding: 10px;
     position: absolute;
@@ -218,21 +214,20 @@ body {
 }
    .nav-menu a {
    display: inline-block;
-    padding: 14px 28px;
+    padding: 5px;
     background: linear-gradient(145deg, #fc0781, #d40372);
     color: white;
     font-weight: 300;
-    font-size: larger;
+    font-size: x-small;
     text-decoration: none;
-    border: 6px solid #ffffff;
-    box-shadow: 8px 8px 0 #00000067;
+    border: 3px solid #ffffff;
+    box-shadow: 8px 8px 0 #000000;
     position: relative;
     transform: rotate(-2deg);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'Bangers', cursive;
-    font-size: 1.1rem;
-    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    text-shadow: 3px 3px 0 rgb(0, 0, 0);
 }
 
 .nav-menu a:hover {
@@ -241,7 +236,7 @@ body {
     box-shadow: 12px 12px 0 #000;
 }
 
-.nav-menu a::after {
+/* .nav-menu a::after {
    content: '';
     position: absolute;
     top: 15%;
@@ -251,7 +246,7 @@ body {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
     border-radius: 50%;
     transform: rotate(-20deg);
-}
+} */
 
         /* Style admin*/
         .dropdown { 
@@ -359,6 +354,7 @@ hr {
 }
 
 .hero-content {
+    font-size: xx-large;
     margin: 20px auto; /* Reduced margin */
     background-size: cover;
     background-position: center;
@@ -380,6 +376,14 @@ hr {
     font-weight: 200;
     color: #FFFF00;
     text-shadow: 4px 4px 0 #000000;
+}
+.container h1 {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: xx-large !important;
+    color: #000000;
+    text-shadow: 3px 3px 0 #FF1493;
 }
 .container h3{
     text-align: center;
@@ -426,8 +430,6 @@ hr {
     align-items: center;
     gap: 0.5rem;
     padding: 5px 10px; /* Smaller buttons */
-    border: 3px solid #000000;
-    border-radius: 0.5rem;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -437,18 +439,22 @@ hr {
 }
 
 .btn-primary {
-    background: #FF1493;
+    border: 5px solid #e1ff00;
+    background: #161616;
     color: #ffffff;
+    box-shadow: #000000 5px 5px 0;
 }
 
 .btn-primary:hover {
-    background: #FF69B4;
+    background: #f70d82;
     transform: translateY(-1px);
 }
 
 .btn-secondary {
+    border: 5px solid #000000;
     background: #00FFFF; /* Cyan */
     color: #000000;
+    box-shadow: #000000 5px 5px 0;
 }
 
 .btn-secondary:hover {
@@ -469,14 +475,6 @@ hr {
     margin: 0 auto 15px auto; /* Centered with reduced bottom margin */
 }
 
-.features h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    color: #000000;
-    font-weight: 200;
-    text-shadow: 3px 3px 0 #FF1493;
-}
 .features-grid {
     display: flex;
     flex-direction: column; /* Stack cards vertically */
@@ -772,32 +770,6 @@ hr {
         font-size: 13px;
     }
 
-    /* Media Stats Section */
-    .media-stats-section {
-        padding: 15px;
-    }
-
-    .media-stats-container {
-        gap: 15px;
-    }
-
-    .media-stats-box {
-        padding: 10px;
-    }
-
-    .media-stats-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .media-stats-content h5 {
-        font-size: 13px;
-    }
-
-    .media-stats-content p {
-        font-size: 0.8rem;
-        width: fit-content;
-    }
-
     /* Hero Section */
     .hero {
         padding: 3rem 0;
@@ -1006,7 +978,6 @@ hr {
     .hero-content h1, .hero-content-2 h1 {
         font-size: 2.5rem;
     }
-
     .container h3 {
         font-size: 1.5rem;
     }
