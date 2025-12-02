@@ -20,6 +20,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <main class="main-container">
     <?php if (!isset($hide_nav)): ?>  <!-- Masquer le header si $hide_nav est défini -->
     <header class="header">
        <nav class="navbar">
@@ -68,7 +69,7 @@
             <p>Version <?php echo APP_VERSION; ?></p>
         </div>
     </footer>
-
+    </main>
     <script src="<?php echo url('assets/js/app.js'); ?>"></script>
 </body>
 </html>
