@@ -1,6 +1,6 @@
 *{
     border : 2px solid #fd0505;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 /* Candy Land Theme CSS */ 
 :root {
@@ -421,10 +421,10 @@ hr {
     background: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
     animation: ray 25s linear infinite;
 }
-@keyframes ray {
+/* @keyframes ray {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
+} */
 
 .hero-content {
     margin: 20px auto; /* Reduced margin */
@@ -781,6 +781,7 @@ hr {
     gap: 1rem;
     padding: 0.5rem 0;
     min-width: 100%;
+    user-select: none;
     cursor: grab;
 }
 
@@ -795,7 +796,6 @@ hr {
 .carousel-container {
     -ms-overflow-style: none;
     scrollbar-width: none;
-
 }
 
 .carousel-item {
@@ -928,6 +928,7 @@ p span.available {
     margin-bottom: 1.5rem;
     border-radius: 0.5rem;
     background-color: #9932CC; /* Purple search */
+    backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     border: 5px solid #000000;
 }
