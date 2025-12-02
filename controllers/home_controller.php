@@ -8,7 +8,7 @@ function home_index()
 {
     $data = [
         'title' => 'Accueil',
-        'message' => 'Bienvenue sur votre application PHP MVC !',
+        'message' => ' SUGAR RUSH !',
         'features' => [
             'Architecture MVC claire',
             'Système de routing simple',

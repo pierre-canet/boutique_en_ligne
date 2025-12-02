@@ -1,11 +1,11 @@
 <div class="hero">
     <div class="hero-content">
         <h1><?php e($message); ?></h1>
-        <p class="hero-subtitle">Un starter kit PHP avec architecture MVC procédurale</p>
+        <p class="hero-subtitle">GET YOUR DAILY DOSE OF SWEET CHAOS !</p>
         <?php if (!is_logged_in()): ?>
             <div class="hero-buttons">
-                <a href="<?php echo url('auth/register'); ?>" class="btn btn-primary">Commencer</a>
-                <a href="<?php echo url('auth/login'); ?>" class="btn btn-secondary">Se connecter</a>
+                <a href="<?php echo url('auth/register'); ?>" class="btn btn-primary">SHOP NOW -></a>
+                <!-- <a href="<?php echo url('auth/login'); ?>" class="btn btn-secondary">Se connecter</a> -->
             </div>
         <?php else: ?>
             <p class="welcome-message">
@@ -18,7 +18,7 @@
 
 <section class="features">
     <div class="container">
-        <h2>Fonctionnalités incluses</h2>
+        <h1>FRESH DROPS !</h1>
         <div class="features-grid">
             <?php foreach ($features as $feature): ?>
                 <div class="feature-card">
