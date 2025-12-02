@@ -781,7 +781,6 @@ hr {
     gap: 1rem;
     padding: 0.5rem 0;
     min-width: 100%;
-    user-select: none;
     cursor: grab;
 }
 
@@ -928,6 +927,7 @@ p span.available {
     margin-bottom: 1.5rem;
     border-radius: 0.5rem;
     background-color: #9932CC; /* Purple search */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     border: 5px solid #000000;
