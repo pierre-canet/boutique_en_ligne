@@ -4,7 +4,7 @@
 CREATE DATABASE IF NOT EXISTS php_mvc_app CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE php_mvc_app;
 
--- Table des utilisateurs
+-- Table des utilisateurss
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
