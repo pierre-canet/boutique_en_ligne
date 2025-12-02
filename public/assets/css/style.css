@@ -803,7 +803,7 @@ hr {
     color: #ffffff;
     flex: 0 0 280px; /* Slightly smaller for mobile */
     background-color: #9932CC; /* Purple item */
-    
+    -webkit-backdrop-filter: blur();
     backdrop-filter: blur(50px);
     border: 5px solid #000000;
     border-radius: 0.75rem;
