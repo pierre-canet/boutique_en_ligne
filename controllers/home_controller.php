@@ -8,11 +8,23 @@ function home_index()
 {
     $data = [
         'title' => 'Accueil',
-        'message' => 'Bienvenue sur votre application PHP MVC !',
+        'message' => ' SUGAR RUSH !',
         'features' => [
-            'Architecture MVC claire',
-            'Système de routing simple',
-            'Templating HTML/CSS',
+            [
+                'label' => 'Bonbon',
+                'url' => 'category/mvc',
+                'image' => 'assets/images/ChatGPT Image 27 nov. 2025, 17_26_29.png'
+            ],
+            [
+                'label' => 'Système de routing simple',
+                'url' => 'category/routing',
+                'image' => 'assets/images/image(2).jpg'
+            ],
+            [
+                'label' => 'Templating HTML/CSS',
+                'url' => 'category/templates',
+                'image' => 'assets/images/IMG_9713.jpeg'
+            ],
             'Gestion de base de données',
             'Sécurité intégrée'
         ]

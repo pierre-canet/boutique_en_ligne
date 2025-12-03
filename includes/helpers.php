@@ -32,6 +32,23 @@ function url($path = '') {
 }
 
 /**
+ * Génère une URL vers un asset en encodant correctement le nom de fichier
+ */
+function asset($path = '') {
+    $base_url = rtrim(BASE_URL, '/');
+    $path = ltrim($path, '/');
+    $parts = explode('/', $path);
+    $last = array_pop($parts);
+    $last = rawurlencode($last);
+    if (!empty($parts)) {
+        $path = implode('/', $parts) . '/' . $last;
+    } else {
+        $path = $last;
+    }
+    return $base_url . '/' . $path;
+}
+
+/**
  * Redirection HTTP
  */
 function redirect($path = '') {
