@@ -63,10 +63,35 @@
         <?php echo $content ?? ''; ?>
     </main>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
         <div class="footer-content">
-            <p>&copy; <?php echo date('Y'); ?> <?php echo APP_NAME; ?>. Tous droits réservés.</p>
-            <p>Version <?php echo APP_VERSION; ?></p>
+            <div class="newsletter">
+                <h3>DON'T MISS OUT!</h3>
+                <p>SUBSCRIBE FOR EXPLOSIVE DEALS & SUGAR RUSHES.</p>
+                <form>
+                    <input type="email" placeholder="YOUR EMAIL..." required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="links">
+                <h4>QUICK LINKS</h4>
+                <a href="<?php echo url('home/about'); ?>">ABOUT US</a>
+                <a href="<?php echo url('home/shipping'); ?>">SHIPPING</a>
+                <a href="<?php echo url('home/faq'); ?>">FAQ</a>
+                <a href="<?php echo url('home/returns'); ?>">RETURNS</a>
+            </div>
+            <div class="social">
+                <h4>FOLLOW THE FUN</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="" alt="Instagram"></a>
+                    <a href="#"><img src="" alt="Facebook"></a>
+                    <a href="#"><img src="" alt="TikTok"></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 CANDY LAND INC. · CANDY LAND v0.0
         </div>
     </footer>
     </main>
