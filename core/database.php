@@ -78,7 +78,7 @@ function db_commit() {
 }
 
 /**
- * Annule une transaction
+ * Annule une transactionj
  */
 function db_rollback() {
     $pdo = db_connect();
