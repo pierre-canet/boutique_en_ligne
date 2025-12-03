@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
     <?php endif; ?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <main class="main-container">
     <?php if (!isset($hide_nav)): ?>  <!-- Masquer le header si $hide_nav est défini -->
@@ -37,6 +39,8 @@
             <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
             <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
                 <?php if (is_logged_in()): ?>
+
+                    <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
                     <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
             <li class="dropdown-container">
             <a href="<?php echo url('admin/dashboard'); ?>">Administration <i class="fas fa-chevron-down"></i></a>
@@ -48,6 +52,7 @@
             </ul>
             </li>
                     <?php endif; ?>
+
                     <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
                 <?php else: ?>
                     <li><a href="<?php echo url('auth/login'); ?>">Connexion</a></li>
@@ -72,4 +77,5 @@
     </main>
     <script src="<?php echo url('assets/js/app.js'); ?>"></script>
 </body>
+
 </html>
