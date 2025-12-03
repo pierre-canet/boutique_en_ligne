@@ -7,7 +7,7 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
-define('BASE_URL', 'http://localhost:/boutique_en_ligne/public');
+define('BASE_URL', 'http://localhost/boutique_en_ligne/public');
 define('APP_NAME', 'CANDYLAND');
 define('APP_VERSION', '1.0.0');
 
