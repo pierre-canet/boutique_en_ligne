@@ -84,14 +84,20 @@
             <div class="social">
                 <h4>FOLLOW THE FUN</h4>
                 <div class="social-icons">
-                    <a href="#"><img src="" alt="Instagram"></a>
-                    <a href="#"><img src="" alt="Facebook"></a>
-                    <a href="#"><img src="" alt="TikTok"></a>
+                    <a href="#"><img src="<?= url('assets/images/i.png'); ?>" alt="Instagram">
+</a>
+                    <a href="#"><img src="<?= url('assets/images/f.png'); ?>" alt="Facebook"></a>
+                    <a href="#"><img src="<?= url('assets/images/t.png'); ?>" alt="TikTok"></a>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            © 2025 CANDY LAND INC. · CANDY LAND v0.0
+           <h4>© 2025 CANDY LAND INC. · CANDY LAND v0.0</h4> 
+        <div class="condition">
+            <p>Mentions Légales</p>
+           <p>Politique de Confidentialité</p>
+           <p>Conditions d'Utilisation</p>
+           <p>FAQ</p></div>
         </div>
     </footer>
     </main>
