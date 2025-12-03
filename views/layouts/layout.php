@@ -24,7 +24,7 @@
     <?php if (!isset($hide_nav)): ?>  <!-- Masquer le header si $hide_nav est défini -->
     <header class="header">
        <nav class="navbar">
-            <div class="nav-brand"><a href="<?php echo url(); ?>"><?php echo APP_NAME; ?></a></div>
+            <div class="nav-brand"><a href="<?php echo url(); ?>"><img src="<?= url('assets/images/candy.png'); ?>" alt="Logo"> <?php echo APP_NAME; ?></a></div>
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="hamburger">
             <span></span>
@@ -34,8 +34,8 @@
             <ul class="nav-menu">
             <li><a href="<?php echo url(); ?>">Accueil</a></li>
             <li><a href="<?php echo url('catalog/index'); ?>">produits</a></li>
-            <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
-            <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
+            <!-- <li><a href="<?php echo url('home/about'); ?>">À propos</a></li> -->
+            <!-- <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li> -->
                 <?php if (is_logged_in()): ?>
                     <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
             <li class="dropdown-container">
@@ -50,8 +50,8 @@
                     <?php endif; ?>
                     <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
                 <?php else: ?>
-                    <li><a href="<?php echo url('auth/login'); ?>">Connexion</a></li>
-                    <li><a href="<?php echo url('auth/register'); ?>">Inscription</a></li>
+                    <li><a href="<?php echo url('auth/login'); ?>">👤 Compte</a></li>
+                    <li><a href="<?php echo url('auth/cart'); ?>">🛒 Panier</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -76,10 +76,11 @@
             </div>
             <div class="links">
                 <h4>QUICK LINKS</h4>
-                <a href="<?php echo url('home/about'); ?>">ABOUT US</a>
-                <a href="<?php echo url('home/shipping'); ?>">SHIPPING</a>
+                <a href="<?php echo url('home/about'); ?>">À PROPOS</a>
+                <a href="<?php echo url('home/contact'); ?>">CONTACT</a>
+                <a href="<?php echo url('home/shipping'); ?>">LIVRAISON</a>
                 <a href="<?php echo url('home/faq'); ?>">FAQ</a>
-                <a href="<?php echo url('home/returns'); ?>">RETURNS</a>
+                <a href="<?php echo url('home/returns'); ?>">RETOURS</a>
             </div>
             <div class="social">
                 <h4>FOLLOW THE FUN</h4>
