@@ -166,7 +166,6 @@ body {
     padding: 10px;
     position: absolute;
     top: 25px;
-    left: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -177,11 +176,11 @@ body {
 
 .nav-menu li {
     list-style: none;
-    margin: 5px;
+
 }
    .nav-menu a {
     display: inline-block;
-    padding: 5px;
+    margin-left: 10px;
     right: 60%;
     background: linear-gradient(145deg, #fc0781, #d40372);
     color: white;
@@ -904,11 +903,11 @@ footer {
 
     .nav-brand {
         margin: auto;
-        /* order: -1; Move to top-left */
+        order: -1; /* Move to top-left */
     }
 
     .nav-brand a {
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 
     /* Keep hamburger menu for tablet */
@@ -920,7 +919,7 @@ footer {
         display: none; /* Hidden by default, shown when menu-toggle is checked */
         flex-direction: column;
         position: absolute;
-        top: 25px;
+        top: 90px;
         left: 0;
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -931,6 +930,8 @@ footer {
     }
 
     .nav-menu a {
+        margin : 5px;
+        left: 0px;
         font-size: 15px;
         padding: 8px 12px;
     }
