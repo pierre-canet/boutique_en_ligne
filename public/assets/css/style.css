@@ -141,7 +141,7 @@ body {
     justify-content: center;
     transition: all 0.3s ;
 }
-.navbar :hover {
+.nav-brand :hover {
     transform: scale(1.1) rotate(1deg);
 }
 .nav-brand {
@@ -159,7 +159,7 @@ body {
 }
 
 .nav-menu {
-   display: none;
+    display: none;
     flex-direction: column;
     gap: 0;
     background: #00FFFF; /* Cyan menu */
@@ -180,20 +180,22 @@ body {
     margin: 5px;
 }
    .nav-menu a {
-   display: inline-block;
+    display: inline-block;
     padding: 5px;
     right: 60%;
     background: linear-gradient(145deg, #fc0781, #d40372);
     color: white;
     font-weight: 300;
     font-size: small;
+    text-transform: uppercase;
     text-decoration: none;
     border: 3px solid #ffffff;
     box-shadow: 8px 8px 0 #000000;
     position: relative;
     transform: rotate(-2deg);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-family: 'Bangers', cursive;
+    font-family: 'Comic Neue', cursive;
+    text-shadow: #000000 2px 2px 0;
 }
 
 .nav-menu a:hover {
@@ -368,19 +370,20 @@ hr {
 
 .hero-content h1 {
     font-family: 'Bangers', cursive;
-    font-size: 1.5rem; /* Smaller font for mobile */
-    margin-top: 8px;
-    margin-bottom: 0.8rem;
+    font-size: 2rem; /* Smaller font for mobile */
+    margin-top: -3rem;
+    margin-bottom: 8rem;
     font-weight: 200;
-    color: yellow;
-    text-shadow: 4px 4px 0 var(--primary-color);
-}.hero-content-2 h1 {
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 0 rgb(0, 0, 0);
+}
+.hero-content-2 h1 {
     font-size: 1.5rem; /* Smaller font for mobile */
     margin-top: 8px;
     margin-bottom: 0.8rem;
     font-weight: 200;
     color: #FFFF00;
-    text-shadow: 4px 4px 0 #000000;
+    text-shadow: 4px 4px 0 #ffff00;
 }
 .container h1 {
     transform: rotate(2deg) translateY(-2px);
@@ -419,10 +422,10 @@ hr {
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.9rem;
     margin-bottom: 1rem;
-    font-weight: 300;
-    opacity: 0.9;
+    /* font-weight: 300; */
+    /* opacity: 0.9; */
     color: #ffffff;
     text-shadow: 2px 2px 0 #000000;
 }
@@ -464,6 +467,7 @@ hr {
 }
 
 .btn-primary {
+    font-family: 'Comic Neue', cursive;
     border: 5px solid #fffb00;
     background: #161616;
     color: #ffffff;
