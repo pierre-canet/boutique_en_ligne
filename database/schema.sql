@@ -203,11 +203,11 @@ CREATE TABLE `shop_order` (
 CREATE TABLE `users` (
   `id` int NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone_number` int DEFAULT NULL,
+  `phone_number` varchar(99) DEFAULT NULL,
   `firstname` varchar(99) NOT NULL,
   `lastname` varchar(99) NOT NULL,
   `password` varchar(99) NOT NULL,
-  `admin` int NOT NULL
+  `admin` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------

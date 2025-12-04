@@ -9,10 +9,16 @@
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 
             <div class="form-group">
-                <label for="name">Nom complet</label>
-                <input type="text" id="name" name="name" required
-                    value="<?php echo escape(post('name', '')); ?>"
-                    placeholder="Votre nom complet">
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" required
+                    value="<?php echo escape(post('firstname', '')); ?>"
+                    placeholder="Votre prénom">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" required
+                    value="<?php echo escape(post('lastname', '')); ?>"
+                    placeholder="Votre nom de famille">
             </div>
 
             <div class="form-group">
@@ -20,6 +26,12 @@
                 <input type="email" id="email" name="email" required
                     value="<?php echo escape(post('email', '')); ?>"
                     placeholder="votre@email.com">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Téléphone</label>
+                <input type="phone_number" id="phone_number" name="phone_number"
+                    value="<?php echo escape(post('phone_number', '')); ?>"
+                    placeholder="0726...">
             </div>
 
             <div class="form-group">
