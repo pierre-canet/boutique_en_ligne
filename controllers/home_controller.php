@@ -40,7 +40,7 @@ function home_about()
 {
     $data = [
         'title' => 'À propos',
-        'content' => 'Cette application est un starter kit PHP MVC développé avec une approche procédurale.'
+        'content' => 'Bienvenue à Candyland, LA référence en matière de vente de confiseries en tous genres !'
     ];
 
     load_view_with_layout('home/about', $data);
