@@ -83,59 +83,73 @@ function home_contact()
  */
 function home_profile()
 {
-    // Rediriger non connecté
+    // Rediriger si non connecté
     if (!is_logged_in()) {
         set_flash('error', 'Vous devez être connectés pour accéder à votre profil.');
         redirect('home');
-    } else {
-        $data = [
-            'title' => 'Profil',
-            'message' => 'Bienvenue sur votre profil',
-            'content' => 'Sur cette page vous allez pouvoir accéder à votre profil ainsi que le modifier',
-            'user' => '',
-        ];
-        if (is_logged_in()) {
-            $id = $_SESSION['user_id'];
-            $user = get_user_by_id($id);
-            $data['user'] = $user;
-        } else {
-            redirect('home');
-        };
-        if (isset($_POST['submit'])) {
-            $login = clean_input(post('loginChange'));
-            $password = post('passwordChange');
-            $confirm_password = post('passwordConfirm');
-            $update_success = '';
-            if (!empty($_POST['loginChange'])) {
-
-
-                if (get_user_by_login($login)) {
-                    set_flash('error', 'Ce login est déjà utilisé.');
-                } else {
-                    update_user_login($id, $login);
-                    $update_success = 1;
-                }
-            };
-
-            if (!empty($_POST['passwordChange']) && !empty($_POST['passwordConfirm'])) {
-                if (strlen($password) < 6) {
-                    set_flash('error', 'Le mot de passe doit contenir au moins 6 caractères.');
-                } elseif ($password !== $confirm_password) {
-                    set_flash('error', 'Les mots de passe ne correspondent pas.');
-                } else {
-                    update_user_password($id, $password);
-                    $update_success = 1;
-                };
-            }
-
-
-            if ($update_success === 1) {
-                set_flash('success', 'Modifications réussie ! Vous pouvez maintenant continuer à profiter du site !');
-                redirect('home/profile');
-            }
-        };
     }
 
+    $user_id = $_SESSION['user_id'];
+    $user = get_user_by_id($user_id);
+
+    // Traiter le formulaire POST
+    if (is_post()) {
+        // Vérifier le token CSRF
+        if (!verify_csrf_token(post('csrf_token'))) {
+            set_flash('error', 'Token de sécurité invalide.');
+            redirect('home/profile');
+        }
+
+        $firstname = clean_input(post('firstname'));
+        $lastname = clean_input(post('lastname'));
+        $email = clean_input(post('email'));
+        $phone_number = clean_input(post('phone_number'));
+        $password = post('password');
+
+        // Validation
+        if (empty($firstname) || empty($lastname) || empty($email)) {
+            set_flash('error', 'Les champs obligatoires doivent être remplis.');
+        } elseif (!validate_email($email)) {
+            set_flash('error', 'Adresse email invalide.');
+        } else {
+            // Vérifier si l'email est unique (sauf pour l'utilisateur actuel)
+            if (email_exists($email, $user_id)) {
+                set_flash('error', 'Cette adresse email est déjà utilisée.');
+            } else {
+                // Mettre à jour les infos de base
+                $ok = update_user($user_id, $firstname, $lastname, $email, $phone_number);
+
+                if ($ok) {
+                    // Si un nouveau mot de passe est fourni, le mettre à jour
+                    if (!empty($password)) {
+                        if (strlen($password) < 6) {
+                            set_flash('warning', 'Le mot de passe n\'a pas été changé (minimum 6 caractères).');
+                        } else {
+                            update_user_password($user_id, $password);
+                            set_flash('success', 'Profil et mot de passe mis à jour avec succès.');
+                        }
+                    } else {
+                        set_flash('success', 'Profil mis à jour avec succès.');
+                    }
+                    
+                    // Mettre à jour la session
+                    $_SESSION['user_name'] = $firstname . ' ' . $lastname;
+                    $_SESSION['user_email'] = $email;
+
+                    redirect('home/profile');
+                } else {
+                    set_flash('error', 'Erreur lors de la mise à jour du profil.');
+                }
+            }
+        }
+    }
+
+    // Préparer les données pour la vue
+    $data = [
+        'title' => 'Profil',
+        'message' => 'Bienvenue sur votre profil',
+        'user' => $user,
+    ];
 
     load_view_with_layout('home/profile', $data);
 }
