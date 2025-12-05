@@ -135,6 +135,21 @@ body {
     height: 80px;
 }
 .nav-menu {
+    border-radius: 0 0 5px;
+   display: none;
+    flex-direction: column;
+    gap: 0;
+    background: #00FFFF; /* Cyan menu */
+    padding: 10px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* border: 3px solid #000000; */
+}
+/* Show menu when checkbox is checked */
+.menu-toggle:checked ~ .nav-menu {
     display: flex;
     flex-direction: row;
     margin-left: 20px;
