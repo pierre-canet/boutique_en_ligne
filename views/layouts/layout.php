@@ -75,7 +75,11 @@
         </div>
     </footer>
     </main>
-    <script src="<?php echo url('assets/js/app.js'); ?>"></script>
+    <?php
+        $jsPath = PUBLIC_PATH . '/assets/js/app.js';
+        $jsVer = file_exists($jsPath) ? filemtime($jsPath) : $ver;
+    ?>
+    <script src="<?php echo url('assets/js/app.js') . '?v=' . $jsVer; ?>"></script>
 </body>
 
 </html>

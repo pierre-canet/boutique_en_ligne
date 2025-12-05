@@ -46,10 +46,10 @@ function create_user($email, $phone_number, $firstname, $lastname,   $password)
 /**
  * Met à jour un utilisateur
  */
-function update_user($id, $name, $email)
+function update_user($id, $firstname, $lastname, $email, $phone_number = '')
 {
-    $query = "UPDATE users SET name = ?, email = ?, updated_at = NOW() WHERE id = ?";
-    return db_execute($query, [$name, $email, $id]);
+    $query = "UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ? WHERE id = ?";
+    return db_execute($query, [$firstname, $lastname, $email, $phone_number, $id]);
 }
 
 /**
@@ -67,7 +67,7 @@ function update_user_login($id, $login)
 function update_user_password($id, $password)
 {
     $hashed_password = hash_password($password);
-    $query = "UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?";
+    $query = "UPDATE users SET password = ? WHERE id = ?";
     return db_execute($query, [$hashed_password, $id]);
 }
 
