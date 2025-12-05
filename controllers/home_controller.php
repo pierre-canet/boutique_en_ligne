@@ -8,7 +8,9 @@ function home_index()
 {
     $data = [
         'title' => 'Accueil',
-        'message' => ' SUGAR RUSH !',
+
+        'message' => ' BIENVENUE !',
+
         'features' => [
             [
                 'label' => 'Bonbon',

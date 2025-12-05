@@ -26,7 +26,7 @@
     <?php if (!isset($hide_nav)): ?>  <!-- Masquer le header si $hide_nav est défini -->
     <header class="header">
        <nav class="navbar">
-            <div class="nav-brand"><a href="<?php echo url(); ?>"><?php echo APP_NAME; ?></a></div>
+            <div class="nav-brand"><a href="<?php echo url(); ?>"><img src="<?= url('assets/images/candy.png'); ?>" alt="Logo"> <?php echo APP_NAME; ?></a></div>
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="hamburger">
             <span></span>
@@ -52,11 +52,10 @@
             </ul>
             </li>
                     <?php endif; ?>
-
                     <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
                 <?php else: ?>
-                    <li><a href="<?php echo url('auth/login'); ?>">Connexion</a></li>
-                    <li><a href="<?php echo url('auth/register'); ?>">Inscription</a></li>
+                    <li><a href="<?php echo url('auth/login'); ?>">👤 Compte</a></li>
+                    <li><a href="<?php echo url('auth/cart'); ?>">🛒 Panier</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -68,10 +67,42 @@
         <?php echo $content ?? ''; ?>
     </main>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
         <div class="footer-content">
-            <p>&copy; <?php echo date('Y'); ?> <?php echo APP_NAME; ?>. Tous droits réservés.</p>
-            <p>Version <?php echo APP_VERSION; ?></p>
+            <div class="newsletter">
+                <h3>DON'T MISS OUT!</h3>
+                <p>SUBSCRIBE FOR EXPLOSIVE DEALS & SUGAR RUSHES.</p>
+                <form>
+                    <input type="email" placeholder="YOUR EMAIL..." required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="links">
+                <h4>QUICK LINKS</h4>
+                <a href="<?php echo url('home/about'); ?>">À PROPOS</a>
+                <a href="<?php echo url('home/contact'); ?>">CONTACT</a>
+                <a href="<?php echo url('home/shipping'); ?>">LIVRAISON</a>
+                <a href="<?php echo url('home/faq'); ?>">FAQ</a>
+                <a href="<?php echo url('home/returns'); ?>">RETOURS</a>
+            </div>
+            <div class="social">
+                <h4>FOLLOW THE FUN</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="<?= url('assets/images/i.png'); ?>" alt="Instagram">
+</a>
+                    <a href="#"><img src="<?= url('assets/images/f.png'); ?>" alt="Facebook"></a>
+                    <a href="#"><img src="<?= url('assets/images/t.png'); ?>" alt="TikTok"></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+           <h4>© 2025 CANDY LAND INC. · CANDY LAND v0.0</h4> 
+        <div class="condition">
+            <p>Mentions Légales</p>
+           <p>Politique de Confidentialité</p>
+           <p>Conditions d'Utilisation</p>
+           <p>FAQ</p></div>
         </div>
     </footer>
     </main>
@@ -81,5 +112,4 @@
     ?>
     <script src="<?php echo url('assets/js/app.js') . '?v=' . $jsVer; ?>"></script>
 </body>
-
 </html>
