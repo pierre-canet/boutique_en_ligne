@@ -51,8 +51,8 @@ function auth_login() {
 					// Connexion réussie
 					regenerate_session(true);
 					$_SESSION['user_id'] = $user['id'];
-					$_SESSION['user_nom'] = $user['nom'];
-					$_SESSION['user_prenom'] = $user['prenom'];
+					$_SESSION['user_lastname'] = $user['lastname'];
+					$_SESSION['user_firstname'] = $user['firstname'];
 					$_SESSION['user_email'] = $user['email'];
 					$_SESSION['user_role'] = $user['role'];
 
