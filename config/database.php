@@ -7,7 +7,7 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
-define('HOST_NAME', 'public.test');
+define('HOST_NAME', 'localhost');
 define('BASE_URL', 'http://' . HOST_NAME);
 define('ADMIN_URL', 'http://admin.' . HOST_NAME);
 define('APP_NAME', 'CANDYLAND');

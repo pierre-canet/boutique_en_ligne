@@ -55,9 +55,13 @@ function asset($path = '') {
 
 /**
  * Redirection HTTP
+ * @param string $path Chemin relatif de redirection
+ * @param bool $admin Si true, utilise ADMIN_URL
+ * @return void
  */
-function redirect($path = '') {
-	$url = url($path);
+
+function redirect($path = '', $admin = false) {
+	$url = url($path, $admin);
 	header("Location: $url");
 	exit;
 }
