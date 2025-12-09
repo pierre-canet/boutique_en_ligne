@@ -48,6 +48,13 @@ function dispatch() {
     // Charger le contrôleur
     require_once $controller_file;
     
+if ($controller_name === 'product' && !function_exists($controller_name . '_' . $action_name)) {
+        $product_controller_file = CONTROLLER_PATH . '/product_controller.php';
+        if (file_exists($product_controller_file)) {
+            require_once $product_controller_file;
+        }
+    }
+
     // Nom de la fonction d'action
     $action_function = $controller_name . '_' . $action_name;
     

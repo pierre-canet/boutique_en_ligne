@@ -1,10 +1,11 @@
 <div class="hero hero-image" style="background-image: url('<?php echo asset('assets/images/chatgpt_image_2025_12_03_00_12_09.png'); ?>'); background-size: cover; background-position: center;">
-    <div class="hero-content">
+<div class="hero-content">
         <h1><?php e($message); ?></h1>
+        
         <p class="hero-subtitle">GET YOUR DAILY DOSE OF SWEET CHAOS !</p>
         <?php if (!is_logged_in()): ?>
             <div class="hero-buttons">
-                <a href="<?php echo url('auth/register'); ?>" class="btn btn-primary">SHOP NOW -></a>
+                <a href="<?php echo url('product/index'); ?>" class="btn btn-primary">SHOP NOW -></a>
                 <!-- <a href="<?php echo url('auth/login'); ?>" class="btn btn-secondary">Se connecter</a> -->
             </div>
         <?php else: ?>
