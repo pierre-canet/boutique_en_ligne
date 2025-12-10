@@ -40,3 +40,54 @@ function product_index() {
 
     load_view_with_layout('products/index', $data);
 }
+
+
+/**
+ *Il s'agit d'une fonction de pont permettant à la page show.php d'obtenir des informations de la base de données
+ */
+function product_show($id) {
+    // 1. S'il n'y a pas d'identifiant, donnez une erreur
+
+    if (!$id) {
+        load_404();
+        return;
+    }
+
+    // 2. Obtenez des informations sur le produit (la même fonction utilisée dans le module)
+
+    $product = get_product_by_id($id);
+
+    if (!$product) {
+        load_404();
+        return;
+    }
+
+    // 3. Obtenez le prix (la même logique que vous avez sur la page principale)
+
+    if (function_exists('get_product_price')) {
+        $product['price'] = get_product_price($product['id']);
+    } else {
+        $item = db_select_one("SELECT price FROM product_item WHERE product_id = ?", [$product['id']]);
+        $product['price'] = $item['price'] ?? null;
+    }
+
+    // 4. Obtenez des produits associés
+
+    $related = [];
+    if (function_exists('get_related_products')) {
+        $related = get_related_products($product['category_id'], $product['id'], 3);
+        foreach ($related as &$rel) {
+            $rel['price'] = get_product_price($rel['id']);
+        }
+    }
+
+    // 5. Envoyer des informations à afficher (show.php)
+
+    $data = [
+        'title'   => $product['name'],
+        'product' => $product,
+        'related' => $related
+    ];
+
+    load_view_with_layout('products/show', $data);
+}
