@@ -9,13 +9,14 @@
 </head>
 <body>
     <div class="error-container">
-        <div class="error-content">
             <div class="error-icon">
                 <i class="fas fa-exclamation-triangle"></i>
-            </div>
+            </div>:
+        <div class="error-content">
             <h1>404</h1>
             <h2>Page non trouvée</h2>
             <p>Désolé, la page que vous recherchez n'existe pas ou a été déplacée.</p>
+        </div>
             <div class="error-actions">
                 <a href="<?php echo url(); ?>" class="btn btn-primary">
                     <i class="fas fa-home"></i>
@@ -25,7 +26,6 @@
                     <i class="fas fa-arrow-left"></i>
                     Page précédente
                 </button>
-            </div>
         </div>
     </div>
 </body>

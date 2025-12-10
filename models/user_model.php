@@ -31,12 +31,12 @@ function get_user_by_id($id)
 /**
  * Crée un nouvel utilisateur
  */
-function create_user($name, $email, $password)
+function create_user($email, $phone_number, $firstname, $lastname,   $password)
 {
     $hashed_password = hash_password($password);
-    $query = "INSERT INTO users (name, email, password, created_at) VALUES (?, ?, ?, NOW())";
+    $query = "INSERT INTO users (email, phone_number, firstname, lastname, password) VALUES (?, ?, ?, ?, ?)";
 
-    if (db_execute($query, [$name, $email, $hashed_password])) {
+    if (db_execute($query, [$email, $phone_number, $firstname, $lastname, $hashed_password])) {
         return db_last_insert_id();
     }
 
@@ -46,10 +46,10 @@ function create_user($name, $email, $password)
 /**
  * Met à jour un utilisateur
  */
-function update_user($id, $name, $email)
+function update_user($id, $firstname, $lastname, $email, $phone_number = '')
 {
-    $query = "UPDATE users SET name = ?, email = ?, updated_at = NOW() WHERE id = ?";
-    return db_execute($query, [$name, $email, $id]);
+    $query = "UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ? WHERE id = ?";
+    return db_execute($query, [$firstname, $lastname, $email, $phone_number, $id]);
 }
 
 /**
@@ -67,7 +67,7 @@ function update_user_login($id, $login)
 function update_user_password($id, $password)
 {
     $hashed_password = hash_password($password);
-    $query = "UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?";
+    $query = "UPDATE users SET password = ? WHERE id = ?";
     return db_execute($query, [$hashed_password, $id]);
 }
 

@@ -132,15 +132,18 @@ function validateForm(form) {
     const passwordField = form.querySelector('input[name="password"]');
     const confirmPasswordField = form.querySelector('input[name="confirm_password"]');
     
-    if (passwordField && passwordField.value.length < 6) {
+    // Only validate password length if the user entered something (password change is optional)
+    if (passwordField && passwordField.value.trim() !== '' && passwordField.value.length < 6) {
         showFieldError(passwordField, 'Le mot de passe doit contenir au moins 6 caractères');
         isValid = false;
     }
-    
-    if (confirmPasswordField && passwordField && 
-        confirmPasswordField.value !== passwordField.value) {
-        showFieldError(confirmPasswordField, 'Les mots de passe ne correspondent pas');
-        isValid = false;
+
+    // If a confirm password field exists, only compare when at least one is non-empty
+    if (confirmPasswordField && passwordField && (confirmPasswordField.value.trim() !== '' || passwordField.value.trim() !== '')) {
+        if (confirmPasswordField.value !== passwordField.value) {
+            showFieldError(confirmPasswordField, 'Les mots de passe ne correspondent pas');
+            isValid = false;
+        }
     }
     
     return isValid;
