@@ -1,15 +1,9 @@
--- Schéma de base de données pour l'application PHP MVC
--- Exécutez ce script dans votre base de données MySQL
-
-CREATE DATABASE IF NOT EXISTS candyland_database CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE candyland_database;
-
 -- phpMyAdmin SQL Dump
--- version 6.0.0-dev+20250718.d42db65a1e
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 04, 2025 at 08:41 AM
+-- Generation Time: Dec 10, 2025 at 01:17 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -116,6 +110,24 @@ CREATE TABLE `product` (
   `product_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `category_id`, `name`, `description`, `product_image`) VALUES
+(1, 11, 'Assortiment Bonbons Colorés', 'Diverses collections de bonbons colorés et délicieux', 'assets/images/bonbons.jpg'),
+(2, 11, 'Oursons Gélifiés', 'Oursons en gélatine au goût de fraise et de citron', 'assets/images/oursons.jpg'),
+(3, 11, 'Bonbons Acidulés', 'Des bonbons épicés et acides au goût explosif', 'assets/images/acidules.jpg'),
+(4, 12, 'Tablette Chocolat Noir', 'Chocolat noir à 70% de cacao fort et épicé', 'assets/images/chocolat.jpg'),
+(5, 12, 'Chocolat au Lait', 'Du lait et un délicieux chocolat au lait pour toute la famille', 'assets/images/lait.jpg'),
+(6, 12, 'Chocolat Blanc Premium', 'Chocolat blanc de première qualité au goût pur de vanille', 'assets/images/blanc.jpg'),
+(7, 13, 'Sucettes Artisanales Fraise', 'Sucettes artistiques au goût de fraise', 'assets/images/sucettes.jpg'),
+(8, 13, 'Sucettes Couleurs Arc-en-ciel', 'Collection arc-en-ciel de diverses sucettes', 'assets/images/Sucettes-c.jpg'),
+(9, 13, 'Bonbons à la menthe poivrée', 'Sucette rafraîchissante et sucrée au goût de menthe', 'assets/images/menthe.jpg'),
+(10, 14, 'Guimauves Vanille', 'poisson vanille doux et aéré', 'assets/images/guimauves.jpg'),
+(11, 14, 'Guimauves Chocolat', 'Poisson enrobé de chocolat noir', 'assets/images/Guimauves-c.jpg'),
+(12, 14, 'guimauves à l\'orange', 'Une collection de plats de poisson variés aux goûts différents', 'assets/images/guimauves-o.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -124,9 +136,19 @@ CREATE TABLE `product` (
 
 CREATE TABLE `product_category` (
   `id` int NOT NULL,
-  `parent_category_id` int NOT NULL,
-  `category_name` int NOT NULL
+  `parent_category_id` int DEFAULT NULL,
+  `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_category`
+--
+
+INSERT INTO `product_category` (`id`, `parent_category_id`, `category_name`) VALUES
+(11, NULL, 'Bonbons & Gélifiés'),
+(12, NULL, 'Chocolat'),
+(13, NULL, 'Sucettes'),
+(14, NULL, 'Guimauves');
 
 -- --------------------------------------------------------
 
@@ -140,6 +162,24 @@ CREATE TABLE `product_item` (
   `stock` int NOT NULL,
   `price` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_item`
+--
+
+INSERT INTO `product_item` (`id`, `product_id`, `stock`, `price`) VALUES
+(1, 1, 15, 13),
+(2, 2, 20, 10),
+(3, 3, 18, 11),
+(4, 4, 12, 15),
+(5, 5, 16, 13),
+(6, 6, 10, 16),
+(7, 7, 25, 9),
+(8, 8, 22, 10),
+(9, 9, 19, 9),
+(10, 10, 14, 12),
+(11, 11, 13, 13),
+(12, 12, 17, 13);
 
 -- --------------------------------------------------------
 
@@ -209,6 +249,13 @@ CREATE TABLE `users` (
   `password` varchar(99) NOT NULL,
   `admin` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `phone_number`, `firstname`, `lastname`, `password`, `admin`) VALUES
+(1, 'abbas@gmail.ocm', '111111111', 'aaa', 'zzz', '$2y$10$g/RM0qORCfFkyhByqOZPbOYjkEXWQ68P4/1IIFM8pWMRYvYImXovu', 0);
 
 -- --------------------------------------------------------
 
@@ -364,19 +411,19 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_item`
 --
 ALTER TABLE `product_item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `shipping_method`
@@ -406,7 +453,7 @@ ALTER TABLE `shop_order`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_payment_method`
