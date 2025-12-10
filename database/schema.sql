@@ -207,15 +207,13 @@ CREATE TABLE `users` (
   `firstname` varchar(99) NOT NULL,
   `lastname` varchar(99) NOT NULL,
   `password` varchar(99) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'user'
+  `role` enum('user','admin','superadmin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `phone_number`, `firstname`, `lastname`, `password`, `role`) VALUES
-(1, 'pierre.canet@laplateforme.io', '0788454627', 'Pierre', 'Canet', '$2y$10$kRRfB90t4g2kZW2quu./0OOShUU6HcTUe.t5zHJiDx51knQ1gJzl2', 'user');
 
 -- --------------------------------------------------------
 
