@@ -5,8 +5,7 @@
         <p class="hero-subtitle">GET YOUR DAILY DOSE OF SWEET CHAOS !</p>
         <?php if (!is_logged_in()): ?>
             <div class="hero-buttons">
-                <a href="<?php echo url('product/index'); ?>" class="btn btn-primary">SHOP NOW -></a>
-                <!-- <a href="<?php echo url('auth/login'); ?>" class="btn btn-secondary">Se connecter</a> -->
+                <a href="<?php echo url('auth/register'); ?>" class="btn btn-primary">SHOP NOW -></a>
             </div>
         <?php else: ?>
             <p class="welcome-message">
@@ -17,17 +16,53 @@
     </div>
 </div>
 
+<!-- ========================= -->
+<!--     FRESH DROPS           -->
+<!-- ========================= -->
 <section class="features">
-    <div class="container">
+    <div class="container"> 
         <h1>FRESH DROPS !</h1>
         <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-media">
+                    <img src="<?php echo asset('assets/images/dubai_choco.png'); ?>" 
+                         alt="Chocolate of Dubai" class="feature-image" />
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-media">
+                    <img src="<?php echo asset('assets/images/product2.png'); ?>" 
+                         alt="Product 2" class="feature-image" />
+                </div>
+            </div>
+v 
+            <div class="feature-card">
+                <div class="feature-media">
+                    <img src="<?php echo asset('assets/images/ChatGPT Image 4 déc. 2025, 17_44_49.png'); ?>" 
+                         alt="Chocolate of Dubai" class="feature-image" />
+                </div>
+            
+
+</section>
+
+<!-- ========================= -->
+<!--       HOT PICKS           -->
+<!-- ========================= -->
+<section class="getting-started">
+    <div class="container">
+        <h2>HOT PICKS! 🔥</h2>
+        
+        <div class="steps">
+           <div class="features-grid">
             <?php $display_features = is_array($features) ? array_slice($features, 0, 4) : []; ?>
             <?php foreach ($display_features as $index => $feature): ?>
                 <?php if ($index === 3): ?>
                     <div class="feature-card">
                         <a class="feature-link" href="<?php echo url('box/composer'); ?>">
                             <div class="feature-media">
-                                <img src="<?php echo asset('assets/images/chatgpt_image_2025_12_02_22_55_37.png'); ?>" alt="Box à composer" class="feature-image" />
+                                <img src="<?php echo asset('assets/images/ChatGPT Image 9 déc. 2025, 11_35_55.png'); ?>" alt="Box à composer" class="feature-image" />
                             </div>
                         </a>
                     </div>
@@ -37,7 +72,11 @@
                     <?php if (is_array($feature) && isset($feature['image']) && !empty($feature['image']) && isset($feature['url'])): ?>
                         <a class="feature-link" href="<?php echo url($feature['url']); ?>">
                             <div class="feature-media">
-                                <img src="<?php echo asset($feature['image']); ?>" alt="<?php e($feature['label'] ?? ''); ?>" class="feature-image" />
+                                <?php if ($index === 0): ?>
+                                    <img src="<?php echo asset('assets/images/hotpick-santa.png'); ?>" alt="" class="feature-image" />
+                                <?php else: ?>
+                                    <img src="<?php echo asset('assets/images/ChatGPT Image 9 déc. 2025, 11_57_58.png'); ?>" alt="" class="feature-image" />
+                                <?php endif; ?>
                             </div>
                         </a>
                     <?php elseif (is_array($feature) && isset($feature['image']) && !empty($feature['image'])): ?>
@@ -62,54 +101,10 @@
     </div>
 </section>
 
-<section class="getting-started">
-    <div class="container">
-        <h2>HOT PICKS! 🔥</h2>
-        
-        <div class="steps">
-            
-           <div class="features-grid">
-            <?php $display_features = is_array($features) ? array_slice($features, 0, 4) : []; ?>
-            <?php foreach ($display_features as $index => $feature): ?>
-                <?php if ($index === 3): ?>
-                    <div class="feature-card">
-                        <a class="feature-link" href="<?php echo url('box/composer'); ?>">
-                            <div class="feature-media">
-                                <img src="<?php echo asset('assets/images/chatgpt_image_2025_12_02_22_55_37.png'); ?>" alt="Box à composer" class="feature-image" />
-                            </div>
-                        </a>
-                    </div>
-                    <?php continue; ?>
-                <?php endif; ?>
-                <div class="feature-card">
-                    <?php if (is_array($feature) && isset($feature['image']) && !empty($feature['image']) && isset($feature['url'])): ?>
-                        <a class="feature-link" href="<?php echo url($feature['url']); ?>">
-                            <div class="feature-media">
-                                <img src="<?php echo asset($feature['image']); ?>" alt="<?php e($feature['label'] ?? ''); ?>" class="feature-image" />
-                            </div>
-                        </a>
-                    <?php elseif (is_array($feature) && isset($feature['image']) && !empty($feature['image'])): ?>
-                        <div class="feature-media">
-                            <img src="<?php echo asset($feature['image']); ?>" alt="<?php e($feature['label'] ?? ''); ?>" class="feature-image" />
-                        </div>
-                    <?php else: ?>
-                        <div class="feature-content">
-                            <i class="fas fa-check-circle"></i>
-                            <?php if (is_array($feature) && isset($feature['label']) && isset($feature['url'])): ?>
-                                <h3><a href="<?php echo url($feature['url']); ?>"><?php e($feature['label']); ?></a></h3>
-                            <?php elseif (is_array($feature) && isset($feature['label'])): ?>
-                                <h3><?php e($feature['label']); ?></h3>
-                            <?php else: ?>
-                                <h3><?php e($feature); ?></h3>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section> 
- <section class="getting-started-2">
+<!-- ========================= -->
+<!--     CANDY UNIVERSE        -->
+<!-- ========================= -->
+<section class="getting-started-2">
     <div class="container">
         <h2>CANDY UNIVERSE! 🌟</h2>
         <div class="steps">
@@ -149,10 +144,9 @@
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
-                </div>
+                </div>  
             <?php endforeach; ?>
         </div>
         </div>
     </div>
-</section> 
- 
+</section>
