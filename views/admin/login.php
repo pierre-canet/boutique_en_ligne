@@ -4,8 +4,8 @@
             <h1><?php e($title); ?></h1>
             <p>Connectez-vous à votre compte</p>
         </div>
-
-        <form method="POST" class="auth-form" action="<?php echo url('auth/login'); ?>">
+        <?php flash_messages(); ?>
+        <form method="POST" class="auth-form" action="<?php echo url('auth/login', true); ?>">
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 
             <div class="form-group">
