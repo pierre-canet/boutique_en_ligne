@@ -1,19 +1,33 @@
 <?php
-if (!defined('MODELS_PATH')) {
-    define('MODELS_PATH', dirname(__DIR__) . '/models');
-}
-function product_index() {
-    $category_id = $_GET['category'] ?? null;
 
-    if ($category_id && is_numeric($category_id)) {
+if (!function_exists('get_all_products')) {
+    if (!defined('MODELS_PATH')) {
+        define('MODELS_PATH', dirname(__DIR__) . '/models');
+    }
+    require_once MODELS_PATH . '/products_model.php';
+}
+
+
+function product_index() {
+    $category_id = isset($_GET['category']) ? $_GET['category'] : null;
+    
+    if ($category_id !== null && !is_numeric($category_id)) {
+        $category_id = null;
+    }
+
+    if ($category_id) {
         $products = get_products_by_category($category_id);
-        $cat_info = db_select_one("SELECT category_name FROM product_category WHERE id = ?", [$category_id]);
-        $current_category_name = $cat_info ? $cat_info['category_name'] : 'Catégorie';
+        $current_category_name = get_category_name($category_id) ?? 'Catégorie';
     } else {
         $products = get_all_products();
         $current_category_name = 'SHOP ALL!';
-        $category_id = null;
     }
+
+    
+    foreach ($products as &$product) {
+        $product['price'] = get_product_price($product['id']); 
+    }
+    unset($product); 
 
     $data = [
         'title'                 => 'Shop All!',

@@ -647,80 +647,145 @@ footer {
     gap: 40px;
 }
 
-.filters {
-    width: 150px;
-    background: white;
-    border: 5px solid #000;
-    padding: 10px;
-    box-shadow: 10px 10px 0 #000;
-    /* position: sticky; */
-    top: 10px;
-    height: fit-content;
-}
 
-.filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: -30px -10px 0px 0px;
-}
-.filter-header h4 {
-    font-family: 'Bangers', cursive;
-    font-size: 1rem;
-    color: #FF1493;
-    letter-spacing: 2px;
-    background-color:#fff200;
-    text-shadow: #000000 2px 2px 0;
-    box-shadow: 8px 8px 0 #000000;
-    width: fit-content;
-    padding: 0px 15px;
-    transform: rotate(-2deg) ;
-    border: 5px solid #000000;
-}
+/* <style> */
+    /* . Bouton circulaire flottant (bouton de déclenchement) */
+    .cat-trigger-btn {
+        position: fixed;
+        top: 110px;     
+        left: 140px;    
+        
+        width: 150px;
+        height:70px;
+        
+        background-color: #fffb00; 
+        border: 5px solid #000;    
+        border-radius: 50%;
+        box-shadow: 5px 5px 0 #000; 
+        
+        cursor: pointer;
+        z-index: 1000;
+        transition: transform 0.2s;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
 
-.clear-filters  {
-    background-color:#9932CC ;
-    box-shadow: 3px 3px 0 #000000;
-    padding: 0px 5px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transform: rotate(-2deg) ;
-}
-.clear-filters:hover {
-    transform: scale(1.1);
-}
+    .cat-trigger-btn:hover {
+        transform: scale(1.1);
+    }
 
-.category-btn {
-    font-family: 'Comic Neue', cursive;
-    display: block;
-    width: fit-content;
-    padding: 5px;
-    margin: 10px 0;
-    background: #FF1493;
-    box-shadow: 5px 5px 0 #000;
-    color: white;
-    border: 3px solid #000;
-    font-size: 0.8rem;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s;
-    transform: rotate(-2deg) ;
-}
+    /* Texte à l'intérieur du cercle */
+    .btn-text {
+        font-weight: bold;
+        font-family: 'Bangers', cursive; 
+        color: #000000; 
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        pointer-events: none;
+        line-height: 1.2;
+    }
 
-.category-btn:hover {
-    background: #FF69B4;
-    transform: translateX(5px);
-}
+    
+    .cat-popup-content {
+        display: none;
+        position: fixed;
+        
+        /* Lieu d'ouverture : juste en dessous du cercle */
+        top: 190px; 
+        left: 140px;
+        
+        z-index: 1001;
+        max-height: 200vh;
+        overflow-y: auto;
+        
+        width: 150px;
+        background: rgba(255, 255, 255, 0.717);
+        border: 5px solid #000;
+        padding: 10px;
+        box-shadow: 10px 10px 0 #000;
+        
+        /* Animation d'ouverture */
+        animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-/* Active category styling */
-.category-btn.active {
-    background: #ff0080;
-    box-shadow: 8px 8px 0 #000;
-    transform: translateX(5px) scale(1.02);
-    border-color: #000;
-}
+    @keyframes popUp {
+        from { transform: scale(0.5) translateY(-20px); opacity: 0; }
+        to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    
+    .filter-header-box {
+        text-align: center;
+        margin-bottom: 15px;
+        position: relative; 
+    }
+
+    .filter-header-box h4 {
+        font-family: 'Bangers', cursive;
+        font-size: 1rem;
+        width: fit-content;
+        color: #FF1493;
+        letter-spacing: 2px;
+        background-color: #fff200;
+        text-shadow: #000000 2px 2px 0;
+        box-shadow: 8px 8px 0 #000000;
+        width: fit-content;
+        padding: 2px 10px;
+        margin: 0 auto; 
+        transform: rotate(-2deg);
+        border: 5px solid #000000;
+    }
+
+    .close-container {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        z-index: 10;
+        padding: 5px;
+    }
+
+    .category-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category-btn {
+        font-family: 'Comic Neue', cursive;
+        display: flex;
+        width: fit-content; 
+        padding: 5px;
+        margin: 5px 0;
+        background: #FF1493;
+        box-shadow: 5px 5px 0 #000;
+        color: white;
+        border: 3px solid #000;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-align: left; 
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none; 
+       transform: rotate(-2deg);
+    }
+
+    .category-btn:hover {
+        background: #FF69B4;
+        box-shadow: 8px 8px 0 #000; 
+        transform: translateX(5px);
+    }
+
+    /* mode actif */
+    .category-btn.active {
+        background: #ff0080;
+        box-shadow: 4px 4px 0 #000; 
+        transform: translateX(2px) scale(1.02) rotate(-2deg);
+        border-color: #000;
+        color: #fff200; 
+    }
+/* </style> */
 
 .products-grid {
     margin: 15px;

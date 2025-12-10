@@ -49,7 +49,7 @@ function dispatch() {
     require_once $controller_file;
     
 if ($controller_name === 'product' && !function_exists($controller_name . '_' . $action_name)) {
-        $product_controller_file = CONTROLLER_PATH . '/product_controller.php';
+        $product_controller_file = CONTROLLER_PATH . '/products_controller.php';
         if (file_exists($product_controller_file)) {
             require_once $product_controller_file;
         }
