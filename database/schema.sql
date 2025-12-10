@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 10, 2025 at 01:17 PM
+-- Generation Time: Dec 10, 2025 at 09:50 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adress`
+-- Table structure for table `address`
 --
 
-CREATE TABLE `adress` (
+CREATE TABLE `address` (
   `id` int NOT NULL,
   `street_number` int NOT NULL,
   `adress_line1` varchar(255) NOT NULL,
@@ -182,7 +182,24 @@ INSERT INTO `product_item` (`id`, `product_id`, `stock`, `price`) VALUES
 (12, 12, 17, 13);
 
 -- --------------------------------------------------------
+CREATE TABLE `settings` (
+  `id` int NOT NULL,
+  `key_name` varchar(100) NOT NULL,
+  `value` text,
+  `description` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `key_name`, `value`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'site_name', 'PHP MVC Starter', 'Nom du site web', '2025-09-09 16:37:49', '2025-09-09 16:37:49'),
+(2, 'maintenance_mode', '0', 'Mode maintenance (0 = désactivé, 1 = activé)', '2025-09-09 16:37:49', '2025-09-09 16:37:49'),
+(3, 'max_login_attempts', '5', 'Nombre maximum de tentatives de connexion', '2025-09-09 16:37:49', '2025-09-09 16:37:49'),
+(4, 'session_timeout', '3600', 'Timeout de session en secondes', '2025-09-09 16:37:49', '2025-09-09 16:37:49');
 --
 -- Table structure for table `shipping_method`
 --
@@ -247,23 +264,21 @@ CREATE TABLE `users` (
   `firstname` varchar(99) NOT NULL,
   `lastname` varchar(99) NOT NULL,
   `password` varchar(99) NOT NULL,
-  `admin` int NOT NULL DEFAULT '0'
+  `role` enum('user','admin','superadmin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `phone_number`, `firstname`, `lastname`, `password`, `admin`) VALUES
-(1, 'abbas@gmail.ocm', '111111111', 'aaa', 'zzz', '$2y$10$g/RM0qORCfFkyhByqOZPbOYjkEXWQ68P4/1IIFM8pWMRYvYImXovu', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_adress`
+-- Table structure for table `user_address`
 --
 
-CREATE TABLE `user_adress` (
+CREATE TABLE `user_address` (
   `user_id` int NOT NULL,
   `adress_id` int NOT NULL,
   `is_default` int DEFAULT NULL
@@ -290,9 +305,9 @@ CREATE TABLE `user_payment_method` (
 --
 
 --
--- Indexes for table `adress`
+-- Indexes for table `address`
 --
-ALTER TABLE `adress`
+ALTER TABLE `address`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -338,6 +353,14 @@ ALTER TABLE `product_item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `key_name` (`key_name`);
+
+
+--
 -- Indexes for table `shipping_method`
 --
 ALTER TABLE `shipping_method`
@@ -378,9 +401,9 @@ ALTER TABLE `user_payment_method`
 --
 
 --
--- AUTO_INCREMENT for table `adress`
+-- AUTO_INCREMENT for table `address`
 --
-ALTER TABLE `adress`
+ALTER TABLE `address`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
@@ -424,6 +447,13 @@ ALTER TABLE `product_category`
 --
 ALTER TABLE `product_item`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `shipping_method`
