@@ -657,7 +657,7 @@ footer {
         background-color:#9932CC; 
         border: 3px solid #000000;    
         border-radius: 50%;
-        box-shadow: 5px 5px 0 #FF1493; 
+        box-shadow: 5px 5px 0 #ffffff; 
         cursor: pointer;
         z-index: 1000;
         transition: transform 0.2s;
