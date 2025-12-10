@@ -18,9 +18,9 @@
             <button id="close-popup-btn" class="clear-filters-btn">X</button>
         </div> -->
 
-        <div class="filter-header-box">
+        <!-- <div class="filter-header-box">
             <h4>CATEGORIES</h4>
-        </div>
+        </div> -->
 
         <div class="category-list">
             <a href="<?= url('product') ?>" 

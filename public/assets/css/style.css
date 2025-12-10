@@ -384,6 +384,7 @@ box-shadow: 12px 12px 0 #000000;
 }
 /* Forms */
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -395,16 +396,23 @@ box-shadow: 12px 12px 0 #000000;
 .form-group label {
     font-family: 'Bangers', cursive;
     margin-bottom: 0.5rem;
-    font-weight: 200;
-    color: #ffffff;
-    align-self: flex-start;
+    color: #000000;
     font-size: 0.9rem;
+    width: 80%;
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input,
 .form-group textarea {
     background-color: #FFFF00; /* Yellow input */
-
+    width: 80%;
+    padding: 10px;
+}
+.text-c{
+    font-family: comic sans ms, comic sans, cursive;
+}
 /* Product grid interaction improvements */
 .product-card {
     cursor: pointer;
@@ -424,18 +432,8 @@ box-shadow: 12px 12px 0 #000000;
     max-width: 900px;
     width: 100%;
 }
-    color: #000000;
-    width: 100%;
-    padding: 0.6rem;
-    border: 3px solid #000000;
-    box-shadow: 8px 8px 0 #000000;
-    /* border-radius: 0.5rem; */
-    font-size: 0.8rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.form-group :placeholder-shown {
-  font-family: 'Comic Neue', cursive;
-}
+
+
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -654,19 +652,15 @@ footer {
         position: fixed;
         top: 110px;     
         left: 140px;    
-        
         width: 150px;
         height:70px;
-        
-        background-color: #fffb00; 
-        border: 5px solid #000;    
+        background-color:#9932CC; 
+        border: 3px solid #000000;    
         border-radius: 50%;
-        box-shadow: 5px 5px 0 #000; 
-        
+        box-shadow: 5px 5px 0 #FF1493; 
         cursor: pointer;
         z-index: 1000;
         transition: transform 0.2s;
-        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -682,11 +676,12 @@ footer {
     .btn-text {
         font-weight: bold;
         font-family: 'Bangers', cursive; 
-        color: #000000; 
+        color: #ffffff; 
         font-size: 1.3rem;
         letter-spacing: 1px;
         pointer-events: none;
         line-height: 1.2;
+        text-shadow: 2px 2px #000000;
     }
 
     
@@ -717,27 +712,6 @@ footer {
         to { transform: scale(1) translateY(0); opacity: 1; }
     }
     
-    .filter-header-box {
-        text-align: center;
-        margin-bottom: 15px;
-        position: relative; 
-    }
-
-    .filter-header-box h4 {
-        font-family: 'Bangers', cursive;
-        font-size: 1rem;
-        width: fit-content;
-        color: #FF1493;
-        letter-spacing: 2px;
-        background-color: #fff200;
-        text-shadow: #000000 2px 2px 0;
-        box-shadow: 8px 8px 0 #000000;
-        width: fit-content;
-        padding: 2px 10px;
-        margin: 0 auto; 
-        transform: rotate(-2deg);
-        border: 5px solid #000000;
-    }
 
     .close-container {
         position: absolute;
@@ -965,6 +939,26 @@ footer {
     background: #FFFF00 !important;
     transform: translateX(5px);
 }
+
+.content-main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 5px solid #000000;
+    box-shadow: 8px 8px 0 #000000;
+    margin: 20px;
+
+}
+.sidebar {
+    flex: 1;
+    border: 5px solid #000000;
+    box-shadow: 8px 8px 0 #000000;
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 20px;
+}
 /* --------------------------------------------------------------------------- */
 
 
@@ -1182,7 +1176,24 @@ footer {
 }
 
 @media (max-width: 480px) {
+    
+.cat-trigger-btn {
+        top: 110px;     
+        left: 250px;    
+        width: 100px;
+        height:50px;
+    }
+    .btn-text {
+        font-size: 0.8rem;
+    }
 
+    
+    .cat-popup-content {
+        top: 165px; 
+        left: 250px;        
+        width: 80px;
+    }
+    /* -------------------------------------------- */
 .auth-container {
     min-height: 80vh;
     display: flex;
@@ -1246,7 +1257,7 @@ footer {
     display: none;
     flex-direction: column;
     margin-left: -40px !important;
-    top: 90px;
+    top: 74px;
     gap: 5px;
     width: fit-content;
     padding: 2px;
@@ -1374,8 +1385,7 @@ footer {
 .form-group label {
     font-family: 'Bangers', cursive;
     margin-bottom: 0.5rem;
-    font-weight: 200;
-    color: #ffffff;
+    color: #000000;
     align-self: flex-start;
     font-size: 0.9rem;
 }
@@ -1384,8 +1394,8 @@ footer {
 .form-group textarea {
     background-color: #FFFF00; /* Yellow input */
     color: #000000;
-    width: 100%;
     padding: 0.6rem;
+    
     border: 3px solid #000000;
     box-shadow: 8px 8px 0 #000000;
     /* border-radius: 0.5rem; */
@@ -1466,7 +1476,7 @@ footer {
 }
 .newsletter input {
     padding: 10px;
-    width: 320px;
+    width: 280px;
     font-size: 15px;
 }
 .newsletter button {

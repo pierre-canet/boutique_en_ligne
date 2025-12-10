@@ -8,8 +8,9 @@
     <div class="container">
         <div class="content-grid">
             <div class="content-main">
-                <h2>Nous contacter</h2>
+                <div class = "text-c"><h2>Nous contacter</h2>
                 <p>N'hésitez pas à nous envoyer un message. Nous vous répondrons dans les plus brefs délais.</p>
+                </div>
                 
                 <form method="POST" class="contact-form">
                     <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
