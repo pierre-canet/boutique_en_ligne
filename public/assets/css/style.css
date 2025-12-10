@@ -861,13 +861,13 @@ footer {
 }
 .modal {
     background: white;
-    width: 90%;
-    max-width: 900px;
+    width: fit-content;
+    /* max-width: 900px; */
     border: 6px solid #000;
     box-shadow: 20px 20px 0 #000;
     display: flex;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 .modal .left {
     flex: 1 1 45%;
@@ -876,6 +876,7 @@ footer {
     flex: 1 1 55%;
     display: flex;
     flex-direction: column;
+    font-size:small;
 }
 .modal .product-image-large {
     width: 100%;
@@ -890,7 +891,11 @@ footer {
 }
 .modal h2 { margin: 0 0 10px 0; }
 .modal .price { font-size: 1.4rem; color: var(--primary-color); }
-.modal .description { margin-top: 10px; flex: 1; }
+.modal .description { 
+    margin-top: 10px; 
+    flex: 1; 
+    font-size: 1 rem;
+}
 .modal .close-btn {
     align-self: flex-end;
     background: #ff4444;
