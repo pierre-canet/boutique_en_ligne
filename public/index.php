@@ -1,7 +1,6 @@
 <?php
 // Charger la configuration
-require_once '../config/database.php';
-
+require_once __DIR__ . '/../config/database.php';
 // Charger les fichiers core
 require_once CORE_PATH . '/database.php';
 require_once CORE_PATH . '/router.php';
