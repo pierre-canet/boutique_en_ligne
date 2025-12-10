@@ -71,7 +71,7 @@ function get_related_products($category_id, $exclude_id, $limit = 4)
 }
 
 /**
- * Récupère les sous-catégories.
+ *Récupère les sous-catégories.
  */
 function get_subcategories($parent_id)
 {
