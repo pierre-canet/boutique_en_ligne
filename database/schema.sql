@@ -9,7 +9,7 @@ USE candyland_database;
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 04, 2025 at 08:41 AM
+-- Generation Time: Dec 10, 2025 at 09:50 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adress`
+-- Table structure for table `address`
 --
 
-CREATE TABLE `adress` (
+CREATE TABLE `address` (
   `id` int NOT NULL,
   `street_number` int NOT NULL,
   `adress_line1` varchar(255) NOT NULL,
@@ -207,16 +207,23 @@ CREATE TABLE `users` (
   `firstname` varchar(99) NOT NULL,
   `lastname` varchar(99) NOT NULL,
   `password` varchar(99) NOT NULL,
-  `admin` int NOT NULL DEFAULT '0'
+  `role` varchar(20) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `phone_number`, `firstname`, `lastname`, `password`, `role`) VALUES
+(1, 'pierre.canet@laplateforme.io', '0788454627', 'Pierre', 'Canet', '$2y$10$kRRfB90t4g2kZW2quu./0OOShUU6HcTUe.t5zHJiDx51knQ1gJzl2', 'user');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_adress`
+-- Table structure for table `user_address`
 --
 
-CREATE TABLE `user_adress` (
+CREATE TABLE `user_address` (
   `user_id` int NOT NULL,
   `adress_id` int NOT NULL,
   `is_default` int DEFAULT NULL
@@ -243,9 +250,9 @@ CREATE TABLE `user_payment_method` (
 --
 
 --
--- Indexes for table `adress`
+-- Indexes for table `address`
 --
-ALTER TABLE `adress`
+ALTER TABLE `address`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -331,9 +338,9 @@ ALTER TABLE `user_payment_method`
 --
 
 --
--- AUTO_INCREMENT for table `adress`
+-- AUTO_INCREMENT for table `address`
 --
-ALTER TABLE `adress`
+ALTER TABLE `address`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
@@ -406,7 +413,7 @@ ALTER TABLE `shop_order`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_payment_method`
