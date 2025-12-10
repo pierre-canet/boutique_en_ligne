@@ -8,7 +8,8 @@
  */
 
 
-function auth_index() {
+function auth_index()
+{
 	auth_login();
 }
 
@@ -19,7 +20,8 @@ function auth_index() {
  */
 
 
-function auth_login() {
+function auth_login()
+{
 
 	// Rediriger si déjà connecté
 	if (is_logged_in()) {
@@ -34,22 +36,19 @@ function auth_login() {
 	if (is_post()) {
 		if (!verify_csrf_token(post('csrf_token'))) {
 			set_flash('error', 'Token CSRF invalide');
-		}
-		else {
+		} else {
 			$email = clean_input(post('email'));
 			$password = post('password');
 
 			if (empty($email) || empty($password)) {
 				set_flash('error', 'Email et mot de passe obligatoires.');
-			}
-			else {
+			} else {
 				// Rechercher l'utilisateur
 				$user = get_user_by_email($email);
 
 				if ($user && verify_password($password, $user['password']) && ($user['role'] === 'admin' || $user['role'] === 'superadmin')) {
-					
+
 					// Connexion réussie
-					regenerate_session(true);
 					$_SESSION['user_id'] = $user['id'];
 					$_SESSION['user_lastname'] = $user['lastname'];
 					$_SESSION['user_firstname'] = $user['firstname'];
@@ -58,8 +57,7 @@ function auth_login() {
 
 					set_flash('success', 'Connexion réussie !');
 					redirect('admin', true);
-				}
-				else {
+				} else {
 					set_flash('error', 'Erreur.');
 				}
 			}
@@ -76,6 +74,7 @@ function auth_login() {
  * @return void
  */
 
-function auth_logout() {
+function auth_logout()
+{
 	logout();
 }

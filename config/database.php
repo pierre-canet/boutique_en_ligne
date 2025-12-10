@@ -8,8 +8,7 @@ define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
 define('HOST_NAME', 'localhost');
-define('BASE_URL', 'http://' . HOST_NAME);
-define('ADMIN_URL', 'http://admin.' . HOST_NAME);
+define('BASE_URL', 'http://localhost/boutique_en_ligne/public');
 define('APP_NAME', 'CANDYLAND');
 define('APP_VERSION', '1.0.0');
 
