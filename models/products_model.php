@@ -121,3 +121,12 @@ function get_all_products_infos()
     ";
     return db_select($query);
 }
+
+/**
+ * Récupère un produit par son nom
+ */
+function get_product_by_name($product_name)
+{
+    $query = "SELECT * FROM product WHERE name = ? LIMIT 1";
+    return db_select_one($query, [$product_name]);
+}

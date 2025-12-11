@@ -40,8 +40,8 @@
             <input type="number" id="stock" name="stock" required>
         </div>
         <div class="form-group">
-            <label for="category_id">Catégorie</label>
-            <select name="category_id" id="category_id" required>
+            <label for="category">Catégorie</label>
+            <select name="category" id="category" required>
                 <option value="">Veuillez sélectionner une catégorie</option>
                 <?php foreach ($categories as $c) : ?>
                     <option value="<?= $c['id'] ?>" ?><?= $c['category_name'] ?></option>
