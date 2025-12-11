@@ -85,7 +85,7 @@ function delete_user($id)
  */
 function get_all_users($limit = null, $offset = 0)
 {
-    $query = "SELECT id, name, email, created_at FROM users ORDER BY created_at DESC";
+    $query = "SELECT id, email, phone_number, firstname, lastname, role FROM users";
 
     if ($limit !== null) {
         $query .= " LIMIT $offset, $limit";

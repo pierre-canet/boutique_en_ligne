@@ -68,6 +68,7 @@ function admin_users_list()
 {
     $data = [
         'title' => 'Gestion des utilisateurs',
+        'user_list' => get_all_users($limit = null, $offset = 0)
     ];
 
     load_view_with_layout('admin/users_list', $data, 'admin_layout');
