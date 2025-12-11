@@ -26,18 +26,18 @@
 
             <div class="feature-card">
                 <div class="feature-media">
-                    <img src="<?php echo asset('assets/images/dubai_choco.png'); ?>" 
-                         alt="Chocolate of Dubai" class="feature-image" />
+                    <img src="<?php echo asset('assets/images/ChatGPT Image 4 déc. 2025, 10_35_15.png'); ?>" 
+                         alt="Fresh Drop" class="feature-image" />
                 </div>
             </div>
 
             <div class="feature-card">
                 <div class="feature-media">
-                    <img src="<?php echo asset('assets/images/product2.png'); ?>" 
-                         alt="Product 2" class="feature-image" />
+                    <img src="<?php echo asset('assets/images/ChatGPT Image 4 déc. 2025, 17_36_42.png'); ?>" 
+                         alt="Fresh Drop" class="feature-image" />
                 </div>
             </div>
-v 
+
             <div class="feature-card">
                 <div class="feature-media">
                     <img src="<?php echo asset('assets/images/ChatGPT Image 4 déc. 2025, 17_44_49.png'); ?>" 
@@ -58,6 +58,9 @@ v
            <div class="features-grid">
             <?php $display_features = is_array($features) ? array_slice($features, 0, 4) : []; ?>
             <?php foreach ($display_features as $index => $feature): ?>
+                <?php if ($index === 1): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
                 <?php if ($index === 3): ?>
                     <div class="feature-card">
                         <a class="feature-link" href="<?php echo url('box/composer'); ?>">
@@ -73,7 +76,7 @@ v
                         <a class="feature-link" href="<?php echo url($feature['url']); ?>">
                             <div class="feature-media">
                                 <?php if ($index === 0): ?>
-                                    <img src="<?php echo asset('assets/images/hotpick-santa.png'); ?>" alt="" class="feature-image" />
+                                    <img src="<?php echo asset('assets/images/30c6ae0b-22c7-4747-9dae-5d26b14663f2.jpg'); ?>" alt="" class="feature-image" />
                                 <?php else: ?>
                                     <img src="<?php echo asset('assets/images/ChatGPT Image 9 déc. 2025, 11_57_58.png'); ?>" alt="" class="feature-image" />
                                 <?php endif; ?>
