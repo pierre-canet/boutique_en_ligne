@@ -35,12 +35,13 @@
         </label>
             <ul class="nav-menu">
             <li><a href="<?php echo url(); ?>">Accueil</a></li>
-            <li><a href="<?php echo url('catalog/index'); ?>">produits</a></li>
+            <li><a href="<?php echo url('product/index'); ?>">produits</a></li>
             <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
             <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
                 <?php if (is_logged_in()): ?>
 
                     <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
+                    <li><a href="<?php echo url('cart'); ?>">Panier <span id="cart-count">0</span></a></li>
                     <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
             <li class="dropdown-container">
             <a href="<?php echo url('admin/dashboard'); ?>">Administration <i class="fas fa-chevron-down"></i></a>
@@ -54,8 +55,8 @@
                     <?php endif; ?>
                     <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
                 <?php else: ?>
-                    <li><a href="<?php echo url('auth/login'); ?>">👤 Compte</a></li>
-                    <li><a href="<?php echo url('auth/cart'); ?>">🛒 Panier</a></li>
+                    <li><a href="<?php echo url('auth/login'); ?>">Compte</a></li>
+                    <li><a href="<?php echo url('cart'); ?>">Panier <span id="cart-count">0</span></a></li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -106,10 +107,7 @@
         </div>
     </footer>
     </main>
-    <?php
-        $jsPath = PUBLIC_PATH . '/assets/js/app.js';
-        $jsVer = file_exists($jsPath) ? filemtime($jsPath) : $ver;
-    ?>
-    <script src="<?php echo url('assets/js/app.js') . '?v=' . $jsVer; ?>"></script>
+    <script src="<?php echo url('assets/js/app.js'); ?>"></script>
+    <script src="<?php echo url('assets/js/cart.js'); ?>"></script>
 </body>
 </html>

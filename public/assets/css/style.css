@@ -138,7 +138,7 @@ body {
     display: flex;
     flex-direction: row;
     margin-left: 20px;
-    gap: 20px;
+    gap: 15px;
 }
 .nav-menu li {
     list-style: none;
@@ -146,12 +146,12 @@ body {
 }
  .nav-menu a {
     display: flex;
-    background: linear-gradient(145deg, #fc0781, #d40372);
+    background: linear-gradient(145deg, #fc0781);
     color: white;
     font-size: 0.8rem;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 10px;
+    padding: 5px;
     border: 3px solid #ffffff;
     box-shadow: 8px 8px 0 #000000;
     /* position: relative; */
@@ -384,6 +384,7 @@ box-shadow: 12px 12px 0 #000000;
 }
 /* Forms */
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -395,27 +396,44 @@ box-shadow: 12px 12px 0 #000000;
 .form-group label {
     font-family: 'Bangers', cursive;
     margin-bottom: 0.5rem;
-    font-weight: 200;
-    color: #ffffff;
-    align-self: flex-start;
+    color: #000000;
     font-size: 0.9rem;
+    width: 80%;
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input,
 .form-group textarea {
     background-color: #FFFF00; /* Yellow input */
-    color: #000000;
+    width: 80%;
+    padding: 10px;
+}
+.text-c{
+    font-family: comic sans ms, comic sans, cursive;
+}
+/* Product grid interaction improvements */
+.product-card {
+    cursor: pointer;
+}
+
+.btn-details {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* Modal overlay - higher z-index to ensure visibility */
+.modal-overlay {
+    z-index: 99999;
+}
+
+.modal {
+    max-width: 900px;
     width: 100%;
-    padding: 0.6rem;
-    border: 3px solid #000000;
-    box-shadow: 8px 8px 0 #000000;
-    /* border-radius: 0.5rem; */
-    font-size: 0.8rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.form-group :placeholder-shown {
-  font-family: 'Comic Neue', cursive;
-}
+
+
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -593,7 +611,507 @@ footer {
     text-decoration: underline;
     transform: scale(1.1);
 }
+/* ----------------------------------------------------------------------- ---- */
+ /* .shop-page {
+    margin: 10px auto;
+    padding: 0 20px;
+    font-family: 'Comic Neue', cursive;
+} */
+.shop-header h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 0 #000;
+    width: fit-content;
+    padding: 10px;
+    color: #000;
+    transform: rotate(-2deg) ;
+}
 
+.shop-header p {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 10px 0 40px;
+    font-family: 'Bangers', cursive;
+    background-color: blueviolet; 
+    box-shadow: 8px 8px 0 #000000;
+    width: fit-content;
+    padding: 10px;
+    transform: rotate(-2deg) ;
+}
+
+.shop-content {
+    display: flex;
+    gap: 40px;
+}
+
+
+/* <style> */
+    /* . Bouton circulaire flottant (bouton de déclenchement) */
+    .cat-trigger-btn {
+        position: fixed;
+        top: 110px;     
+        left: 140px;    
+        width: 150px;
+        height:70px;
+        background-color:#ff002b; 
+        border: 3px solid #000000;    
+        border-radius: 50%;
+        box-shadow: 5px 5px 0 #ffffff; 
+        cursor: pointer;
+        z-index: 1000;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+
+    .cat-trigger-btn:hover {
+        transform: scale(1.1);
+    }
+
+    /* Texte à l'intérieur du cercle */
+    .btn-text {
+        font-weight: bold;
+        font-family: 'Bangers', cursive; 
+        color: #ffffff; 
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        pointer-events: none;
+        line-height: 1.2;
+        text-shadow: 2px 2px #000000;
+    }
+
+    
+    .cat-popup-content {
+        display: none;
+        position: fixed;
+        
+        /* Lieu d'ouverture : juste en dessous du cercle */
+        top: 190px; 
+        left: 140px;
+        
+        z-index: 1001;
+        max-height: 200vh;
+        overflow-y: auto;
+        
+        width: 150px;
+        background: rgba(255, 255, 255, 0.717);
+        border: 5px solid #000;
+        padding: 10px;
+        box-shadow: 10px 10px 0 #000;
+        
+        /* Animation d'ouverture */
+        animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popUp {
+        from { transform: scale(0.5) translateY(-20px); opacity: 0; }
+        to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    
+
+    .close-container {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        z-index: 10;
+        padding: 5px;
+    }
+
+    .category-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category-btn {
+        font-family: 'Comic Neue', cursive;
+        display: flex;
+        width: fit-content; 
+        padding: 5px;
+        margin: 5px 0;
+        background: #FF1493;
+        box-shadow: 5px 5px 0 #000;
+        color: white;
+        border: 3px solid #000;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-align: left; 
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none; 
+       transform: rotate(-2deg);
+    }
+
+    .category-btn:hover {
+        background: #FF69B4;
+        box-shadow: 8px 8px 0 #000; 
+        transform: translateX(5px);
+    }
+
+    /* mode actif */
+    .category-btn.active {
+        background: #ff0080;
+        box-shadow: 4px 4px 0 #000; 
+        transform: translateX(2px) scale(1.02) rotate(-2deg);
+        border-color: #000;
+        color: #fff200; 
+    }
+/* </style> */
+
+.products-grid {
+    margin: 15px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    margin-left: -30px;
+}
+
+.product-card {
+    background: white;
+    border: 5px solid #000;
+    overflow: hidden;
+    box-shadow: 10px 10px 0 #000;
+    transition: transform 0.3s ease;
+    cursor: default !important;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card h4 {
+    padding: 15px;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+.price {
+    text-align: center;
+    font-size: 1rem;
+    color: #FF1493;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.product-actions {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+}
+
+.btn-details {
+    font-size: 0.7rem;
+    flex: 1;
+    background: #7A1FA2;
+    color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid #000;
+    font-weight: bold;
+    box-shadow: 5px 5px 0 #00000086;
+    cursor: pointer;
+    transform: rotate(-2deg) ;
+}
+.btn-details:hover {
+    background:#9932CC;
+    box-shadow: 5px 5px 0 #000000;
+}
+.btn-grab {
+    font-size: 0.7rem;
+    font-family: 'Comic Neue', cursive;
+    background: #ffdd00;
+    flex: 1;
+    color: #ff1491;
+    padding: 5px;
+    border: 3px solid #000000;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 5px 5px 0 #00000096;
+    transform: rotate(-2deg) ;
+}
+
+/* Product detail modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+.modal-overlay.show {
+    display: flex;
+}
+.modal {
+    background: white;
+    width: fit-content;
+    /* max-width: 900px; */
+    border: 6px solid #000;
+    box-shadow: 20px 20px 0 #000;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+.modal .left {
+    flex: 1 1 45%;
+}
+.modal .right {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    font-size:small;
+}
+.modal .product-image-large {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    border: 4px solid #000;
+}
+.modal .product-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.modal h2 { margin: 0 0 10px 0; }
+.modal .price { font-size: 1.4rem; color: var(--primary-color); }
+.modal .description { 
+    margin-top: 10px; 
+    flex: 1; 
+    font-size: 1 rem;
+}
+.modal .close-btn {
+    align-self: flex-end;
+    background: #ff4444;
+    width: fit-content;
+    color: #fff;
+    padding: 0px 10px  0px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Make product card clickable style change */
+.product-card { cursor: pointer; }
+.product-card .product-actions a.btn-details { cursor: pointer; }
+
+.btn-grab:hover {
+    background:#fff200;
+    box-shadow: 5px 5px 0 #000000;
+}
+.sub-categories {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 3px solid #000;
+}
+
+.sub-categories h4 {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.sub-cat {
+    display: block;
+    width: fit-content;
+    padding: 5px;
+    margin: 8px 0;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 3px solid #000000 !important;
+    font-size: 0.7rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sub-cat:hover {
+    background: #FFFF00 !important;
+    transform: translateX(5px);
+}
+
+.content-main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 5px solid #000000;
+    box-shadow: 8px 8px 0 #000000;
+    margin: 20px;
+
+}
+.sidebar {
+    flex: 1;
+    border: 5px solid #000000;
+    box-shadow: 8px 8px 0 #000000;
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 20px;
+}
+/* --------------------------------------------------------------------------- */
+/* ========================================================
+   Styles de show
+   =============================================================== */
+
+.shop-page-padding {
+    padding: 20px;
+}
+
+.back-btn-container a {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: small;
+}
+
+.back-btn-custom {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.product-show-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.product-detail-card {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    width: 100%;
+    max-width: 1000px;
+    border: 6px solid #000;
+    box-shadow: 12px 12px 0 #000;
+    padding: 20px;
+    gap: 30px;
+}
+
+.detail-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-image-large {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border: 4px solid #000;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+}
+
+.product-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-title {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: #FF1493;
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.detail-price {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: #000;
+    background: #fff200;
+    border: 3px solid #000;
+    padding: 5px 15px;
+    display: inline-block;
+    width: fit-content;
+    transform: rotate(-2deg);
+    box-shadow: 5px 5px 0 #000;
+    margin-bottom: 25px;
+}
+
+.detail-description {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 30px;
+    border-left: 4px solid #9932CC;
+    padding-left: 15px;
+}
+
+.btn-grab-large {
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 1.5rem;
+    width: fit-content;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+    background: #fff200;
+    color: #FF1493;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    transition: transform 0.2s;
+}
+
+.btn-grab-large:hover {
+    transform: scale(1.02);
+    background-color: #ffff00;
+}
+
+/* ---Section Produits connexes --- */
+.related-products-container {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    border-top: 5px solid #000000;
+    padding-top: 40px;
+}
+
+.related-title {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #000;
+    text-shadow: 2px 2px 0 #fff;
+    padding: 80px;
+}
+
+.related-grid {
+    margin-top: 50px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+/* --------------------------------------------------------------------------- */
 
 
 /* ============================================================= */
@@ -601,22 +1119,23 @@ footer {
 /* ============================================================= */
 
 /* TABLET (768px - 1023px) */
-@media (max-width: 1023px) {
-    .main-container {
-        width: 80%;
-    }
-    .navbar {
-        padding-right: 10px;
+@media (max-width: 1240px) {
+     .navbar {
+        padding-right: 5px;
     }
     .nav-brand a {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
+    .nav-brand img {
+    width: 60px;
+    height: 60px;
+}
     .nav-menu {
         gap: 15px;
-        margin-left: -40px;
+        margin-left: -20px;
     }
     .nav-menu a {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         padding: 5px 5px;
     }
 
@@ -663,6 +1182,91 @@ footer {
 
     .nav-menu a {
         font-size: 1rem;
+        padding: 5px;
+        margin: 0 20px;
+    }
+
+}
+
+@media (max-width: 1023px) {
+    
+    .navbar {
+        padding-right: 5px;
+    }
+    .nav-brand a {
+        font-size: 1.5rem;
+    }
+    .nav-brand img {
+    width: 40px;
+    height: 40px;
+}
+    .nav-menu {
+        gap: 10px;
+        margin-left: -20px;
+    }
+    .nav-menu a {
+        font-size: 0.6rem;
+        padding: 5px 5px;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+    .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .features-grid {
+        gap: 2rem;
+    }
+    
+
+    .getting-started h2 {
+        font-size: 2rem;
+    }
+
+    .newsletter input {
+        width: 280px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-container {
+    width: 100%;
+    margin: auto;
+    border:none;
+   
+}
+    .cat-trigger-btn {
+        top: 110px;     
+        left: 320px;    
+    }
+    .cat-popup-content {
+        top: 190px; 
+        left: 310px;        
+    }
+   
+    .navbar{
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        padding-right: 10px;
+        padding: 10px 60px 10px 0px;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 78%;
+        left: 25px;
+        background: #00FFFF;
+        padding: 20px 0;
+        border-bottom: 8px solid #000;
+        z-index: 999;
+    }
+
+    .nav-menu a {
+        font-size: 0.7rem;
         padding: 5px;
         margin: 0 20px;
     }
@@ -738,7 +1342,29 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .main-container {
+    width: 100%;
+    margin: auto;
+    border:none;
+   
+}
+.cat-trigger-btn {
+        top: 110px;     
+        left: 290px;    
+        width: 100px;
+        height:50px;
+    }
+    .btn-text {
+        font-size: 0.8rem;
+    }
 
+    
+    .cat-popup-content {
+        top: 165px; 
+        left: 290px;        
+        width: 80px;
+    }
+    /* -------------------------------------------- */
 .auth-container {
     min-height: 80vh;
     display: flex;
@@ -802,7 +1428,7 @@ footer {
     display: none;
     flex-direction: column;
     margin-left: -40px !important;
-    top: 90px;
+    top: 74px;
     gap: 5px;
     width: fit-content;
     padding: 2px;
@@ -930,8 +1556,7 @@ footer {
 .form-group label {
     font-family: 'Bangers', cursive;
     margin-bottom: 0.5rem;
-    font-weight: 200;
-    color: #ffffff;
+    color: #000000;
     align-self: flex-start;
     font-size: 0.9rem;
 }
@@ -940,8 +1565,8 @@ footer {
 .form-group textarea {
     background-color: #FFFF00; /* Yellow input */
     color: #000000;
-    width: 100%;
     padding: 0.6rem;
+    
     border: 3px solid #000000;
     box-shadow: 8px 8px 0 #000000;
     /* border-radius: 0.5rem; */
@@ -1022,7 +1647,7 @@ footer {
 }
 .newsletter input {
     padding: 10px;
-    width: 320px;
+    width: 280px;
     font-size: 15px;
 }
 .newsletter button {
