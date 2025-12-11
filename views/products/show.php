@@ -32,7 +32,7 @@
                     <?php echo nl2br(esc($product['description'])); ?>
                 </div>
 
-                <button class="btn-grab-large add-to-cart" data-id="<?php echo $product['id']; ?>">
+                <button class="btn-grab-large add-to-cart" data-id="<?php echo $product['id']; ?>" >
                     GRAB IT NOW!
                 </button>
             </div>
