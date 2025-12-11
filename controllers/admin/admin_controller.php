@@ -24,19 +24,25 @@ function admin_product_management()
 
         if (empty($product_name) || empty($product_desc) || empty($product_price) || empty($product_stock) || empty($product_category)) {
             set_flash('error', 'Tous les champs du formulaire sont obligatoires.');
+            redirect('product_management', true);
+            exit;
         }
         if (get_product_by_name($product_name)) {
             set_flash('error', 'Ce nom est déjà pris');
+            redirect('product_management', true);
+            exit;
         }
         if (!isset($_FILES['product_image']) || $_FILES['product_image']['error'] !== UPLOAD_ERR_OK) {
             set_flash('error', "Erreur lors de l'upload de l'image.");
+            redirect('product_management', true);
+            exit;
         }
         $allowed_ext = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
         $ext = strtolower(pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION));
 
         if (!in_array($ext, $allowed_ext)) {
             set_flash('error', "Extension d'image non autorisée.");
-            redirect('/admin/product_management');
+            redirect('product_management', true);
             exit;
         }
         $filename = uniqid("product_") . "." . $ext;
@@ -45,12 +51,14 @@ function admin_product_management()
         $target = $upload_dir . $filename;
         if (!move_uploaded_file($_FILES['product_image']['tmp_name'], $target)) {
             set_flash('error', "Impossible d'enregistrer l'image.");
+            redirect('product_management', true);
+            exit;
         }
         $image_path = "/assets/images/" . $filename;
         $product_id = create_product($product_name, $product_desc, $image_path, $product_category);
         create_product_item($product_id, $product_stock, $product_price);
         set_flash('success', "Produit ajouté avec succès !");
-        redirect('product_management');
+        redirect('product_management', true);
         exit;
     };
 
