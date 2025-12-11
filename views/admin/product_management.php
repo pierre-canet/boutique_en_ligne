@@ -22,7 +22,7 @@
 </table>
 <div class="product-upload">
     <p>Ajout de produits</p>
-    <form method="post" class="upload-form">
+    <form method="post" enctype="multipart/form-data" class="upload-form">
         <div class="form-group">
             <label for="name">Nom du produit</label>
             <input type="text" id="name" name="name" required>
@@ -41,18 +41,17 @@
         </div>
         <div class="form-group">
             <label for="category">Catégorie</label>
-            <select name="category" id="category" required>
+            <select name="category_id" id="category_id" required>
                 <option value="">Veuillez sélectionner une catégorie</option>
                 <?php foreach ($categories as $c) : ?>
                     <option value="<?= $c['id'] ?>" ?><?= $c['category_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
+        <div class="form-group">
+            <label for="product_image">Image du produit</label>
+            <input type="file" id="product_image" name="product_image" accept="image/*" required>
+        </div>
         <button type="submit">Ajouter le produit</button>
     </form>
 </div>
-<p>var_dump</p>
-<?php var_dump($categories) ?>
-<p>var_dump</p>
-<?php var_dump($c) ?>
-<p>var_dump</p>

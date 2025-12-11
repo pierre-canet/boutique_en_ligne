@@ -130,3 +130,33 @@ function get_product_by_name($product_name)
     $query = "SELECT * FROM product WHERE name = ? LIMIT 1";
     return db_select_one($query, [$product_name]);
 }
+
+/**
+ * Crée un produit
+ */
+
+function create_product($name, $description, $image_url, $category_id)
+{
+    $query = "INSERT INTO product (name, description, product_image, category_id)
+              VALUES (?, ?, ?, ?)";
+
+    if (db_execute($query, [$name, $description, $image_url, $category_id])) {
+        return db_last_insert_id();
+    }
+
+    return false;
+}
+/**
+ * Crée le prix et le stock du produit
+ */
+function create_product_item($product_id, $price, $stock)
+{
+    $query = "INSERT INTO product_item (product_id, price, stock)
+              VALUES (?, ?, ?)";
+
+    if (db_execute($query, [$product_id, $price, $stock])) {
+        return db_last_insert_id();
+    }
+
+    return false;
+}

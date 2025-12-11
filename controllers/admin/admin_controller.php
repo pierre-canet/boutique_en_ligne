@@ -19,14 +19,39 @@ function admin_product_management()
         $product_desc = clean_input($_POST['description']);
         $product_price = clean_input($_POST['price']);
         $product_stock = clean_input($_POST['stock']);
-        $product_category = clean_input($_POST['category']);
+        $product_category = clean_input($_POST['category_id']);
+
+
         if (empty($product_name) || empty($product_desc) || empty($product_price) || empty($product_stock) || empty($product_category)) {
             set_flash('error', 'Tous les champs du formulaire sont obligatoires.');
-        } else {
-            if (get_product_by_name($product_name)) {
-                set_flash('error', 'Ce nom est déjà pris');
-            }
         }
+        if (get_product_by_name($product_name)) {
+            set_flash('error', 'Ce nom est déjà pris');
+        }
+        if (!isset($_FILES['product_image']) || $_FILES['product_image']['error'] !== UPLOAD_ERR_OK) {
+            set_flash('error', "Erreur lors de l'upload de l'image.");
+        }
+        $allowed_ext = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        $ext = strtolower(pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION));
+
+        if (!in_array($ext, $allowed_ext)) {
+            set_flash('error', "Extension d'image non autorisée.");
+            redirect('/admin/product_management');
+            exit;
+        }
+        $filename = uniqid("product_") . "." . $ext;
+        $filename = uniqid("product_") . "." . $ext;
+        $upload_dir = __DIR__ . "/../../public/assets/images/";
+        $target = $upload_dir . $filename;
+        if (!move_uploaded_file($_FILES['product_image']['tmp_name'], $target)) {
+            set_flash('error', "Impossible d'enregistrer l'image.");
+        }
+        $image_path = "/assets/images/" . $filename;
+        $product_id = create_product($product_name, $product_desc, $image_path, $product_category);
+        create_product_item($product_id, $product_stock, $product_price);
+        set_flash('success', "Produit ajouté avec succès !");
+        redirect('product_management');
+        exit;
     };
 
     load_view_with_layout('admin/product_management', $data, 'admin_layout');
