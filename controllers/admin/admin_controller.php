@@ -64,11 +64,30 @@ function admin_product_management()
 
     load_view_with_layout('admin/product_management', $data, 'admin_layout');
 }
-function admin_users_list()
+function admin_users()
 {
+    if (is_post()) {
+        $user_id = clean_input(post('user_id'));
+        $role    = clean_input(post('role'));
+
+        $allowed_roles = get_user_roles_enum();
+        if (!in_array($role, $allowed_roles)) {
+            set_flash('error', 'Rôle invalide.');
+            redirect('users', true);
+            exit;
+        }
+
+        update_user_role($user_id, $role);
+
+        set_flash('success', 'Rôle modifié.');
+        redirect('users', true);
+        exit;
+    }
+
     $data = [
         'title' => 'Gestion des utilisateurs',
-        'user_list' => get_all_users($limit = null, $offset = 0)
+        'user_list' => get_all_users(null, 0),
+        'roles' => get_user_roles_enum()
     ];
 
     load_view_with_layout('admin/users_list', $data, 'admin_layout');

@@ -13,7 +13,7 @@
 			<i class="fa-solid fa-products"></i> Gestion des produits
 		</a>
 
-		<a href="<?= url('admin/users_list', true) ?>">
+		<a href="<?= url('admin/users', true) ?>">
 			<i class="fa-solid fa-users"></i> Utilisateurs
 		</a>
 

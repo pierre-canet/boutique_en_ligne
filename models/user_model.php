@@ -120,3 +120,28 @@ function email_exists($email, $exclude_id = null)
     $result = db_select_one($query, $params);
     return $result['count'] > 0;
 }
+/**
+ * Récupère les enum de la colonne rôle dans la table users
+ */
+function get_user_roles_enum()
+{
+    $query = "SHOW COLUMNS FROM users LIKE 'role'";
+    $result = db_select_one($query);
+
+    if (!$result) return [];
+
+    $type = $result['Type'];
+
+    preg_match('/enum\((.*)\)/', $type, $matches);
+    $values = str_getcsv($matches[1], ',', "'");
+
+    return $values;
+}
+/**
+ * Modifie le rôle de l'utilisateur
+ */
+function update_user_role($user_id, $role)
+{
+    $query = "UPDATE users SET role = ? WHERE id = ?";
+    return db_execute($query, [$role, $user_id]);
+}
