@@ -654,7 +654,7 @@ footer {
         left: 140px;    
         width: 150px;
         height:70px;
-        background-color:#9932CC; 
+        background-color:#f8009d; 
         border: 3px solid #000000;    
         border-radius: 50%;
         box-shadow: 5px 5px 0 #ffffff; 
@@ -767,6 +767,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
+    margin-left: -30px;
 }
 
 .product-card {
@@ -861,13 +862,13 @@ footer {
 }
 .modal {
     background: white;
-    width: 90%;
-    max-width: 900px;
+    width: fit-content;
+    /* max-width: 900px; */
     border: 6px solid #000;
     box-shadow: 20px 20px 0 #000;
     display: flex;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 .modal .left {
     flex: 1 1 45%;
@@ -876,6 +877,7 @@ footer {
     flex: 1 1 55%;
     display: flex;
     flex-direction: column;
+    font-size:small;
 }
 .modal .product-image-large {
     width: 100%;
@@ -890,7 +892,11 @@ footer {
 }
 .modal h2 { margin: 0 0 10px 0; }
 .modal .price { font-size: 1.4rem; color: var(--primary-color); }
-.modal .description { margin-top: 10px; flex: 1; }
+.modal .description { 
+    margin-top: 10px; 
+    flex: 1; 
+    font-size: 1 rem;
+}
 .modal .close-btn {
     align-self: flex-end;
     background: #ff4444;
@@ -960,7 +966,152 @@ footer {
     margin: 20px;
 }
 /* --------------------------------------------------------------------------- */
+/* ========================================================
+   Styles de show
+   =============================================================== */
 
+.shop-page-padding {
+    padding: 20px;
+}
+
+.back-btn-container a {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: small;
+}
+
+.back-btn-custom {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.product-show-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.product-detail-card {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    width: 100%;
+    max-width: 1000px;
+    border: 6px solid #000;
+    box-shadow: 12px 12px 0 #000;
+    padding: 20px;
+    gap: 30px;
+}
+
+.detail-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-image-large {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border: 4px solid #000;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+}
+
+.product-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-title {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: #FF1493;
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.detail-price {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: #000;
+    background: #fff200;
+    border: 3px solid #000;
+    padding: 5px 15px;
+    display: inline-block;
+    width: fit-content;
+    transform: rotate(-2deg);
+    box-shadow: 5px 5px 0 #000;
+    margin-bottom: 25px;
+}
+
+.detail-description {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 30px;
+    border-left: 4px solid #9932CC;
+    padding-left: 15px;
+}
+
+.btn-grab-large {
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 1.5rem;
+    width: fit-content;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+    background: #fff200;
+    color: #FF1493;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    transition: transform 0.2s;
+}
+
+.btn-grab-large:hover {
+    transform: scale(1.02);
+    background-color: #ffff00;
+}
+
+/* ---Section Produits connexes --- */
+.related-products-container {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    border-top: 5px solid #000000;
+    padding-top: 40px;
+}
+
+.related-title {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #000;
+    text-shadow: 2px 2px 0 #fff;
+    padding: 80px;
+}
+
+.related-grid {
+    margin-top: 50px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+/* --------------------------------------------------------------------------- */
 
 
 /* ============================================================= */
@@ -1081,6 +1232,21 @@ footer {
 }
 
 @media (max-width: 767px) {
+    .main-container {
+    width: 100%;
+    margin: auto;
+    border:none;
+   
+}
+    .cat-trigger-btn {
+        top: 110px;     
+        left: 320px;    
+    }
+    .cat-popup-content {
+        top: 190px; 
+        left: 310px;        
+    }
+   
     .navbar{
         justify-content: space-between;
         flex-direction: row-reverse;
@@ -1091,8 +1257,8 @@ footer {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 80%;
-        left: 40px;
+        top: 78%;
+        left: 25px;
         background: #00FFFF;
         padding: 20px 0;
         border-bottom: 8px solid #000;
@@ -1100,7 +1266,7 @@ footer {
     }
 
     .nav-menu a {
-        font-size: 1rem;
+        font-size: 0.7rem;
         padding: 5px;
         margin: 0 20px;
     }
@@ -1176,10 +1342,15 @@ footer {
 }
 
 @media (max-width: 480px) {
-    
+    .main-container {
+    width: 100%;
+    margin: auto;
+    border:none;
+   
+}
 .cat-trigger-btn {
         top: 110px;     
-        left: 250px;    
+        left: 290px;    
         width: 100px;
         height:50px;
     }
@@ -1190,7 +1361,7 @@ footer {
     
     .cat-popup-content {
         top: 165px; 
-        left: 250px;        
+        left: 290px;        
         width: 80px;
     }
     /* -------------------------------------------- */

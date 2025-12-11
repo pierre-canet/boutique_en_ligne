@@ -20,25 +20,9 @@ function get_all_categories()
 
 function get_products_by_category($category_id, $limit = 20, $offset = 0)
 {
-    $query = "
-        SELECT * FROM product 
-        WHERE category_id = :cat_direct
+    $query = " SELECT * FROM product WHERE category_id = :cat_direct UNION SELECT p.* FROM product p INNER JOIN product_category pc ON p.category_id = pc.id WHERE pc.parent_category_id = :cat_parent LIMIT :limit OFFSET :offset";
 
-        UNION
-
-        SELECT p.* FROM product p
-        INNER JOIN product_category pc ON p.category_id = pc.id
-        WHERE pc.parent_category_id = :cat_parent
-
-        LIMIT :limit OFFSET :offset
-    ";
-
-    return db_select($query, [
-        'cat_direct' => $category_id,
-        'cat_parent' => $category_id,
-        'limit'      => (int)$limit,
-        'offset'     => (int)$offset
-    ]);
+    return db_select($query, ['cat_direct' => $category_id,'cat_parent' => $category_id,'limit' =>(int)$limit,'offset'=> (int)$offset]);
 }
 
 
@@ -54,7 +38,8 @@ function get_products_by_category_direct($category_id, $limit = 20, $offset = 0)
 function search_products($search, $limit = 8)
 {
     $query = "SELECT * FROM product WHERE name LIKE :search OR description LIKE :search LIMIT :limit";
-    return db_select($query, ['search' => "%$search%", 'limit' => (int)$limit]);
+    return db_select($query, ['search' => "%$search%", 
+    'limit' => (int)$limit]);
 }
 
 /**
@@ -64,9 +49,9 @@ function get_related_products($category_id, $exclude_id, $limit = 4)
 {
     $query = "SELECT * FROM product WHERE category_id = :category_id AND id != :exclude_id LIMIT :limit";
     return db_select($query, [
-        'category_id' => $category_id,
-        'exclude_id'  => $exclude_id,
-        'limit'       => (int)$limit
+        'category_id'=> $category_id,
+        'exclude_id' => $exclude_id,
+        'limit'=> (int)$limit
     ]);
 }
 
