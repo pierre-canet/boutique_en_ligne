@@ -41,7 +41,7 @@
 </div>
         <div class="products-grid" id="products-grid">
             <?php foreach ($products as $p): ?>
-                <div class="product-card" data-id="<?= $p['id'] ?>">
+                <div class="product-card" data-id="<?= $p['id'] ?>" data-name="<?= htmlspecialchars($p['name'], ENT_QUOTES) ?>" data-price="<?= $p['price'] ?>" data-image="<?= url($p['product_image']) ?>">
                     <div class="product-image">
                         <img src="<?php echo url($p['product_image']); ?>" 
                              alt="<?= e($p['name']) ?>"
@@ -81,7 +81,7 @@
                 <?= nl2br(esc($p['description'] ?: 'Aucune description disponible.')) ?>
             </div>
             <div class="modal-actions">
-                <button class="btn-grab add-to-cart">+ Ajouter</button>
+                <button class="btn-grab add-to-cart" data-id="<?= $p['id'] ?>" data-name="<?= htmlspecialchars($p['name'], ENT_QUOTES) ?>" data-price="<?= $p['price'] ?>" data-image="<?= url($p['product_image']) ?>">+ Ajouter</button>
                 <a href="<?php echo url('product/show/' . $p['id']); ?>" class="btn-details modal-open-full">Voir tout</a>
             </div>
         </div>
