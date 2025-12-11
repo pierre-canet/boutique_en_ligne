@@ -38,7 +38,6 @@
             <li><a href="<?php echo url('product/index'); ?>">produits</a></li>
             <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
             <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
-            <a href="<?php echo url('home/mentions_legales'); ?>">MENTIONS LÉGALES</a>
                 <?php if (is_logged_in()): ?>
 
                     <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
@@ -102,7 +101,7 @@
         <div class="copyright">
            <h4>© 2025 CANDY LAND INC. · CANDY LAND v0.0</h4> 
         <div class="condition">
-            <p>Mentions Légales</p>
+            <p><a href="<?php echo url('home/mentions_legales'); ?>">MENTIONS LÉGALES</a></p>
            <p>Politique de Confidentialité</p>
            <p>Conditions d'Utilisation</p>
            <p>FAQ</p></div>

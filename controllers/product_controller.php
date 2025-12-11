@@ -91,3 +91,25 @@ function product_show($id) {
 
     load_view_with_layout('products/show', $data);
 }
+function featured_index() {
+    $fresh_drops = get_all_products(3, 0); 
+
+    $hot_picks = get_all_products(3, 3);   
+
+    $candy_universe = get_all_products(3, 6); 
+
+    foreach ($fresh_drops as &$p) { $p['price'] = get_product_price($p['id']); }
+    foreach ($hot_picks as &$p)   { $p['price'] = get_product_price($p['id']); }
+    foreach ($candy_universe as &$p) { $p['price'] = get_product_price($p['id']); }
+    unset($p);
+
+    $data = [
+        'title'          => 'Home Sweet Home',
+        'message'        => 'Welcome to the Candy Shop',
+        'fresh_drops'    => $fresh_drops,
+        'hot_picks'      => $hot_picks,
+        'candy_universe' => $candy_universe
+    ];
+
+    load_view_with_layout('home/index', $data); 
+}
