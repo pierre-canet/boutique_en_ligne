@@ -51,3 +51,8 @@
         <button type="submit">Ajouter le produit</button>
     </form>
 </div>
+<p>var_dump</p>
+<?php var_dump($categories) ?>
+<p>var_dump</p>
+<?php var_dump($c) ?>
+<p>var_dump</p>
