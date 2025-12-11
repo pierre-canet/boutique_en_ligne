@@ -38,6 +38,7 @@
             <li><a href="<?php echo url('product/index'); ?>">produits</a></li>
             <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
             <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
+            <a href="<?php echo url('home/mentions_legales'); ?>">MENTIONS LÉGALES</a>
                 <?php if (is_logged_in()): ?>
 
                     <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
@@ -86,6 +87,7 @@
                 <a href="<?php echo url('home/shipping'); ?>">LIVRAISON</a>
                 <a href="<?php echo url('home/faq'); ?>">FAQ</a>
                 <a href="<?php echo url('home/returns'); ?>">RETOURS</a>
+                <a href="<?php echo url('home/mentions_legales'); ?>">MENTIONS LÉGALES</a>
             </div>
             <div class="social">
                 <h4>FOLLOW THE FUN</h4>

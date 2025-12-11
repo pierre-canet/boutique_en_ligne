@@ -153,3 +153,15 @@ function home_profile()
 
     load_view_with_layout('home/profile', $data);
 }
+
+/**
+ * Page Mentions Légales
+ */
+function home_mentions_legales()
+{
+    $data = [
+        'title' => 'Mentions Légales',
+    ];
+
+    load_view_with_layout('home/mentions_legales', $data);
+}

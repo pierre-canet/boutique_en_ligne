@@ -7,9 +7,15 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
-define('HOST_NAME', 'localhost');
-define('BASE_URL', 'http://' . HOST_NAME);
-define('ADMIN_URL', 'http://admin.' . HOST_NAME);
+// Détection automatique de l'URL de base (utile si le site est servi depuis un sous-dossier comme /boutique_en_ligne/public)
+$detectedHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$protocol     = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+// dirname('/boutique_en_ligne/public/index.php') => '/boutique_en_ligne/public'
+$scriptDir    = dirname($_SERVER['SCRIPT_NAME'] ?? '') ?: '';
+
+define('HOST_NAME', $detectedHost);
+define('BASE_URL', rtrim($protocol . '://' . $detectedHost . rtrim($scriptDir, '/\\'), '/'));
+define('ADMIN_URL', $protocol . '://admin.' . $detectedHost);
 define('APP_NAME', 'CANDYLAND');
 define('APP_VERSION', '1.0.0');
 

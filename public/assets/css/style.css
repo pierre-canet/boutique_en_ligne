@@ -1670,3 +1670,90 @@ footer {
 font-size: 0.5rem;
 }
 }
+
+/* ============================================= */
+/* MENTIONS LÉGALES */
+/* ============================================= */
+.mentions-legales {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    min-height: calc(100vh - 200px);
+}
+
+.mentions-legales h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-family: 'Fredoka One', sans-serif;
+}
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.legal-section {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.legal-section h2 {
+    color: #e74c3c;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+    font-family: 'Comic Neue', sans-serif;
+}
+
+.legal-section p {
+    color: #555;
+    font-size: 1em;
+}
+
+.legal-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: #555;
+}
+
+.legal-list li {
+    margin: 8px 0;
+}
+
+.legal-section a {
+    color: #e74c3c;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.legal-section a:hover {
+    color: #c0392b;
+    text-decoration: underline;
+}
+
+.last-update {
+    color: #999;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .mentions-legales h1 {
+        font-size: 1.8em;
+    }
+
+    .legal-content {
+        padding: 20px;
+    }
+
+    .legal-section h2 {
+        font-size: 1.2em;
+    }
+}
