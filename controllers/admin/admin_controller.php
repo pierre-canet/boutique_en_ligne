@@ -64,3 +64,11 @@ function admin_product_management()
 
     load_view_with_layout('admin/product_management', $data, 'admin_layout');
 }
+function admin_users_list()
+{
+    $data = [
+        'title' => 'Gestion des utilisateurs',
+    ];
+
+    load_view_with_layout('admin/users_list', $data, 'admin_layout');
+}
