@@ -63,8 +63,10 @@
                     <li><strong>Jawad</strong> : Designer et concepteur de notre catalogue !</li>
                     <li><strong>Mehdi</strong> : Développeur de notre page d'accueil et rédacteur des mentions légales</li>
                     <li><strong>Adam</strong> : Développeur de notre page profil et du panier !</li>
-                    <li><strong>Pierre</strong> : Concepteur du back-office et des pages connexion et inscription</li>
-                    <li><strong>Ivan</strong> : le Designer des maquettes du site et le responsable du passage en sous-domaines !</li>
+                    <li><strong>Pierre</strong> : Développeur du back-office et des pages connexion et inscription</li>
+                    <li><strong>Ivan</strong> : Designer des maquettes du site, responsable du passage
+                        en sous-domaines et concepteur du back-office
+                    </li>
                 </ul>
 
                 <h3>Qui sommes-nous ?</h3>
