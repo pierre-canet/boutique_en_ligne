@@ -15,8 +15,8 @@
                     alt="<?= e($p['name']) ?>"
                     onerror="this.src='<?php echo url('assets/images/default.jpg'); ?>'" height="50px" width="auto"></td>
             <td><?php e($p['price']) ?></td>
-            <td></td>
-            <td></td>
+            <td><?php e($p['category_name']) ?></td>
+            <td><?php e($p['stock']) ?></td>
         </tr>
     <?php endforeach ?>
 </table>

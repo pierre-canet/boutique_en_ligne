@@ -8,14 +8,9 @@ function admin_index()
 }
 function admin_product_management()
 {
-    $products = get_all_products();
-    foreach ($products as &$product) {
-        $product['price'] = get_product_price($product['id']);
-    }
-    unset($product);
     $data = [
         'title' => 'gestion produits',
-        'products' => $products,
+        'products' => get_all_products_infos(),
     ];
 
     load_view_with_layout('admin/product_management', $data, 'admin_layout');

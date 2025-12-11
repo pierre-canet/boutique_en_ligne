@@ -94,3 +94,30 @@ function get_category_name($category_id)
     $result = db_select_one($query, [$category_id]);
     return $result ? $result['category_name'] : null;
 }
+
+/**
+ * Récupère les informations complètes des produits
+ */
+function get_all_products_infos()
+{
+    $query = "
+        SELECT 
+            p.id AS product_id,
+            p.name,
+            p.description,
+            p.product_image,
+
+            c.id AS category_id,
+            c.category_name,
+
+            i.id AS item_id,
+            i.price,
+            i.stock
+
+        FROM product p
+        LEFT JOIN product_category c ON p.category_id = c.id
+        LEFT JOIN product_item i ON p.id = i.product_id
+        ORDER BY p.id
+    ";
+    return db_select($query);
+}
