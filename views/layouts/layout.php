@@ -34,29 +34,50 @@
             <span></span>
         </label>
             <ul class="nav-menu">
-            <li><a href="<?php echo url(); ?>">Accueil</a></li>
-            <li><a href="<?php echo url('product/index'); ?>">produits</a></li>
-            <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
-            <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
-                <?php if (is_logged_in()): ?>
+                <li><a href="<?php echo url(); ?>">Accueil</a></li>
+                <li><a href="<?php echo url('product/index'); ?>">produits</a></li>
+                <li><a href="<?php echo url('home/about'); ?>">À propos</a></li>
+                <li><a href="<?php echo url('home/contact'); ?>">Contact</a></li>
 
-                    <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
-                    <li><a href="<?php echo url('cart'); ?>">Panier <span id="cart-count">0</span></a></li>
+                <?php if (is_logged_in()): ?>
                     <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
-            <li class="dropdown-container">
-            <a href="<?php echo url('admin/dashboard'); ?>">Administration <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown">
-            <li><a href="<?php echo url('admin/media'); ?>">Gestion des produits</a></li>
-            <li><a href="<?php echo url('admin/users'); ?>">Gestion des utilisateurs</a></li>
-            <li><a href="<?php echo url('admin/loans'); ?>">Gestion des achats</a></li>
-            <li><a href="<?php echo url('admin/dashboard'); ?>">Tableau de bord</a></li>
-            </ul>
-            </li>
+                        <li class="dropdown-container">
+                            <a href="<?php echo url('admin/dashboard'); ?>">Administration <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="<?php echo url('admin/media'); ?>">Gestion des produits</a></li>
+                                <li><a href="<?php echo url('admin/users'); ?>">Gestion des utilisateurs</a></li>
+                                <li><a href="<?php echo url('admin/loans'); ?>">Gestion des achats</a></li>
+                                <li><a href="<?php echo url('admin/dashboard'); ?>">Tableau de bord</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
-                    <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
+
+                    <li class="dropdown-container">
+                        <a href="#"><i class="fas fa-user"></i><i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="<?php echo url('home/profile'); ?>">Profil</a></li>
+                            <li><a href="<?php echo url('auth/logout'); ?>">Déconnexion</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo url('cart'); ?>">
+                            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+                        </a>
+                    </li>
+
                 <?php else: ?>
-                    <li><a href="<?php echo url('auth/login'); ?>">Compte</a></li>
-                    <li><a href="<?php echo url('cart'); ?>">Panier <span id="cart-count">0</span></a></li>
+                    <li>
+                        <a href="<?php echo url('auth/login'); ?>">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo url('cart'); ?>">
+                            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </nav>
