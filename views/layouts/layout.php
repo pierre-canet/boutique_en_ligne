@@ -123,6 +123,7 @@
 		</div>
 	</div>
 	<script src="<?php echo url('assets/js/app.js'); ?>"></script>
+	<script src="<?php echo url('assets/js/cart.js'); ?>"></script>
 </body>
 
 </html>
