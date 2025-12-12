@@ -5,9 +5,9 @@
 			<i class="fa-solid fa-chart-line"></i> Dashboard
 		</a>
 
-		<a href="<?= url('admin/****', true) ?>">
+		<!-- <a href="<?= url('admin/****', true) ?>">
 			<i class="fa-solid fa-****"></i> ******
-		</a>
+		</a> -->
 
 		<a href="<?= url('product_management', true) ?>">
 			<i class="fa-solid fa-products"></i> Gestion des produits

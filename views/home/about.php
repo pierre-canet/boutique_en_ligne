@@ -11,7 +11,7 @@
                 <h2>À propos de notre site</h2>
                 <p><?php e($content); ?></p>
 
-                <h3>Un catalogue immense !</h3>
+                <h3>Un catalogue modeste mais ambitieux !</h3>
                 <p>Notre site vous propose un catalogue fourni parmi de nombreuses catégories :</p>
                 <ul>
                     <li>
