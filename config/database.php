@@ -22,3 +22,8 @@ define('VIEW_PATH', ROOT_PATH . '/views');
 define('INCLUDE_PATH', ROOT_PATH . '/includes');
 define('CORE_PATH', ROOT_PATH . '/core');
 define('PUBLIC_PATH', ROOT_PATH . '/public');
+
+/**
+ * Pour pouvoir charger le projet en local, il est nécessaire de pointer Laragon vers le dossier 
+ * du projet/public
+ */
