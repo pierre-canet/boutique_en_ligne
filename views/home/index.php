@@ -8,15 +8,15 @@
             </div>
         <?php else: ?>
             <p class="welcome-message">
-                <i class="fas fa-user"></i> 
-                Bienvenue, <?php e($_SESSION['user_name']); ?> !
+                <i class="fas fa-user"></i>
+                Bienvenue, <?php e($_SESSION['user_firstname']); ?> !
             </p>
         <?php endif; ?>
     </div>
 </div>
 
 <section class="features">
-    <div class="container"> 
+    <div class="container">
         <h1>FRESH DROPS !</h1>
         <div class="products-grid-2">
             <?php if (!empty($fresh_drops)): ?>
@@ -69,7 +69,6 @@
                 <p>No Hot Picks available.</p>
             <?php endif; ?>
         </div>
-    </div>
 </section>
 
 <!-- ========================= -->

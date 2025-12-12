@@ -30,7 +30,7 @@ function auth_login()
             if ($user && verify_password($password, $user['password'])) {
                 // Connexion réussie
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_firstname'] = $user['lastname'];
+                $_SESSION['user_firstname'] = $user['firstname'];
                 $_SESSION['user_lastname'] = $user['lastname'];
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['user_phone_number'] = $user['phone_number'];

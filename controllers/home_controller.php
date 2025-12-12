@@ -79,7 +79,7 @@ function home_about()
 {
     $data = [
         'title' => 'À propos',
-        'content' => 'Cette application est un starter kit PHP MVC développé avec une approche procédurale.'
+        'content' => 'Bienvenue à Candyland, LA référence en matière de vente de confiseries en tous genres !'
     ];
 
     load_view_with_layout('home/about', $data);
@@ -168,7 +168,7 @@ function home_profile()
                     } else {
                         set_flash('success', 'Profil mis à jour avec succès.');
                     }
-                    
+
                     // Mettre à jour la session
                     $_SESSION['user_name'] = $firstname . ' ' . $lastname;
                     $_SESSION['user_email'] = $email;
