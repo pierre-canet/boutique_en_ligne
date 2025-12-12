@@ -2,7 +2,7 @@
 
 function get_all_products($limit = 20, $offset = 0)
 {
-    $query = "SELECT * FROM product LIMIT :limit OFFSET :offset";
+    $query = "SELECT * FROM product ORDER BY id DESC LIMIT :limit OFFSET :offset";
     return db_select($query, ['limit' => (int)$limit, 'offset' => (int)$offset]);
 }
 
