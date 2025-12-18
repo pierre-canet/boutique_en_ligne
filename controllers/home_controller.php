@@ -6,30 +6,67 @@
  */
 function home_index()
 {
-    $data = [
-        'title' => 'Accueil',
+    // charger le modèle de produit est chargé
 
-        'message' => ' BIENVENUE !',
+    if (!function_exists('get_product_by_id')) {
+        if (!defined('MODELS_PATH')) {
+            define('MODELS_PATH', dirname(__DIR__) . '/models');
+        }
+        require_once MODELS_PATH . '/products_model.php';
+    }
 
-        'features' => [
-            [
-                'label' => 'Bonbon',
-                'url' => 'category/mvc',
-                'image' => 'assets/images/ChatGPT Image 27 nov. 2025, 17_26_29.png'
-            ],
-            [
-                'label' => 'Système de routing simple',
-                'url' => 'category/routing',
-                'image' => 'assets/images/image(2).jpg'
-            ],
-            [
-                'label' => 'Templating HTML/CSS',
-                'url' => 'category/templates',
-                'image' => 'assets/images/IMG_9713.jpeg'
-            ],
-            'Gestion de base de données',
-            'Sécurité intégrée'
+    $fresh_drops = get_all_products(3, 3); 
+
+    $hot_picks   = get_all_products(3, 0);   
+
+
+    // les prix
+
+    $add_price = function(&$products) {
+        foreach ($products as &$p) {
+            $p['price'] = get_product_price($p['id']);
+        }
+    };
+
+    // Ajouter des prix
+
+    $add_price($fresh_drops);
+    $add_price($hot_picks);
+
+
+    //categorie 
+
+    $candy_categories = [
+        [
+            'label' => 'Bonbons & Gélifiés',
+            'url'   => 'product/index?category=11', 
+            'image' => 'assets/images/ChatGPT Image 27 nov. 2025, 17_26_29.png'
+        ],
+        [
+            'label' => 'Chocolat',
+            'url'   => 'product/index?category=12', 
+            'image' => 'assets/images/image(2).jpg'
+        ],
+        [
+            'label' => 'Sucettes',
+            'url'   => 'product/index?category=13', 
+            'image' => 'assets/images/chatgpt_image_2025_12_02_22_55_37.png'
+        ],
+        [
+            'label' => 'Guimauves',
+            'url'   => 'product/index?category=14', 
+            'image' => 'assets/images/Guimauves-2.png'
         ]
+    ];
+
+    // 5. Envoyer des données à la vue
+
+    $data = [
+        'title'            => 'Accueil',
+        'message'          => 'BIENVENUE !',
+        'fresh_drops'      => $fresh_drops,
+        'hot_picks'        => $hot_picks,
+        'candy_categories' => $candy_categories
     ];
 
     load_view_with_layout('home/index', $data);
@@ -42,7 +79,7 @@ function home_about()
 {
     $data = [
         'title' => 'À propos',
-        'content' => 'Cette application est un starter kit PHP MVC développé avec une approche procédurale.'
+        'content' => 'Bienvenue à Candyland, LA référence en matière de vente de confiseries en tous genres !'
     ];
 
     load_view_with_layout('home/about', $data);
@@ -131,7 +168,7 @@ function home_profile()
                     } else {
                         set_flash('success', 'Profil mis à jour avec succès.');
                     }
-                    
+
                     // Mettre à jour la session
                     $_SESSION['user_name'] = $firstname . ' ' . $lastname;
                     $_SESSION['user_email'] = $email;

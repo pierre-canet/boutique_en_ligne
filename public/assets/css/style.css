@@ -29,6 +29,47 @@ body {
     padding: 0;
     color: #000000; /* Black text */
 }
+
+
+/* --------------------------------------------------- */
+.dropdown {
+    display: none; /* Normalement caché */
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    width: fit-content;
+    min-width: 150px;
+    top: 100%; /* être placé exactement en dessous de l'élément principal */
+}
+
+/* Éléments dans le menu déroulant */
+.dropdown li {
+    display: block;
+}
+
+.dropdown li a {
+    padding: 10px 15px;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    width: fit-content;
+    font-size: 0.4;
+}
+
+.dropdown li a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-container:hover .dropdown {
+    display: block; 
+}
+/* --------------------------------------------------- */
 .main-container {
     width: 80%;
     margin: auto;
@@ -654,7 +695,7 @@ footer {
         left: 140px;    
         width: 150px;
         height:70px;
-        background-color:#ff002b; 
+        background-color:#f8009d; 
         border: 3px solid #000000;    
         border-radius: 50%;
         box-shadow: 5px 5px 0 #ffffff; 
@@ -768,6 +809,13 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
     margin-left: -30px;
+}
+.products-grid-2 {
+     margin: 15px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
 }
 
 .product-card {

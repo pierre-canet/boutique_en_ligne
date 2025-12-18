@@ -129,7 +129,13 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `description`, `product_imag
 (9, 13, 'Bonbons à la menthe poivrée', 'Sucette rafraîchissante et sucrée au goût de menthe', 'assets/images/menthe.jpg'),
 (10, 14, 'Guimauves Vanille', 'poisson vanille doux et aéré', 'assets/images/guimauves.jpg'),
 (11, 14, 'Guimauves Chocolat', 'Poisson enrobé de chocolat noir', 'assets/images/Guimauves-c.jpg'),
-(12, 14, 'guimauves à l\'orange', 'Une collection de plats de poisson variés aux goûts différents', 'assets/images/guimauves-o.jpg');
+(12, 14, 'guimauves à l\'orange', 'Une collection de plats de poisson variés aux goûts différents', 'assets/images/guimauves-o.jpg'),
+(13, 12, 'jelly belli', 'Les Jelly Belly :\r\n\r\nPetits bonbons iconiques aux couleurs vives, les Jelly Belly offrent une explosion de saveurs précises et surprenantes, allant du fruité classique aux goûts les plus inattendus. Leur texture tendre et leur variété infinie en font une gourmandise ludique, addictive et parfaite pour tous les moments.', 'assets/images/ChatGPT Image 4 déc. 2025, 17_44_49.png'),
+(14, 12, 'Ciao Kombucha', 'Une boisson pétillante et naturellement fermentée qui allie fraîcheur, légèreté et bien-être. Avec ses arômes fruités et son équilibre parfait entre douceur et acidité, Ciao Kombucha apporte un boost vivifiant tout en offrant une alternative saine et tendance pour se faire plaisir à chaque gorgée.', 'assets/images/ChatGPT Image 4 déc. 2025, 17_36_42.png'),
+(15, 12, 'Chocolat de Dubaï Original', 'L\'authentique chocolat de Dubaï.', 'assets/images/ChatGPT Image 4 déc. 2025, 10_35_15.png'),
+(16, 11, 'Mélange Signature-Noël', 'Le mélange sucré-salé ultime ! Des chips croustillantes accompagnées de bouchées chocolatées, approuvé par le Père Noël', 'assets/images/30c6ae0b-22c7-4747-9dae-5d26b14663f2.jpg'),
+(17, 12, 'Sucres d\'Orge Cola Rétro', 'Une touche nostalgique avec une saveur moderne ! Ces sucres d\'orge au goût pétillant de cola sont fabriqués avec des arômes 100% naturels', 'assets/images/ChatGPT Image 9 déc. 2025, 11_57_58.png'),
+(18, 12, 'Truffes au Caramel', 'Un mélange fondant de chocolat et de caramel au beurre salé.', 'assets/images/truffes_caramel.jpg');
 
 -- --------------------------------------------------------
 
@@ -182,7 +188,13 @@ INSERT INTO `product_item` (`id`, `product_id`, `stock`, `price`) VALUES
 (9, 9, 19, 9),
 (10, 10, 14, 12),
 (11, 11, 13, 13),
-(12, 12, 17, 13);
+(12, 12, 17, 13),
+(13, 13, 50, 5),
+(14, 14, 40, 3),
+(15, 15, 30, 15),
+(16, 16, 20, 12),
+(17, 17, 15, 4),
+(18, 18, 100, 22);
 
 -- --------------------------------------------------------
 CREATE TABLE `settings` (
