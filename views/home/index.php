@@ -15,8 +15,11 @@
     </div>
 </div>
 
+<!-- ========================= -->
+<!--     FRESH DROPS           -->
+<!-- ========================= -->
 <section class="features">
-    <div class="container">
+    <div class="container"> 
         <h1>FRESH DROPS !</h1>
         <div class="products-grid-2">
             <?php if (!empty($fresh_drops)): ?>
@@ -41,6 +44,9 @@
     </div>
 </section>
 
+<!-- ========================= -->
+<!--       HOT PICKS           -->
+<!-- ========================= -->
 <section class="getting-started">
     <div class="container">
         <h2>HOT PICKS! 🔥</h2>
