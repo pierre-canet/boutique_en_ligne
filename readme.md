@@ -8,3 +8,4 @@ Ci-joint sont ajoutées les liens vers le diagramme de Gant, nos maquettes, le M
 \_Maquette de Jawad : [text](../maquette_jawad.pdf)
 \_Maquette de Mehdi : https://www.figma.com/design/3znPc4M2qI16JFLi2wlpgn/Untitled?node-id=0-1&p=f&t=7NAiUJJOXEby8OdU-0
 \_Maquette de Pierre : https://www.figma.com/design/X6hep8PR9uqjfpzZRjSMg7/Untitled?node-id=0-1&p=f&t=97tTmBXqT3Lvb1Zs-0
+\_Capture d'écran du MCD : ![alt text](mdc.png)
