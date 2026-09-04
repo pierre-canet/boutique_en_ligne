@@ -8,12 +8,24 @@ define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
 // Détection automatique de l'URL de base (utile si le site est servi depuis un sous-dossier comme /boutique_en_ligne/public)
-$detectedHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+// $detectedHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$rawHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$hostParts = explode(':', $rawHost);
+$hostOnly = $hostParts[0];
+$portSuffix = isset($hostParts[1]) ? ':' . $hostParts[1] : '';
+
+if (str_ends_with($hostOnly, 'localhost')) {
+    $baseHost = 'localhost';
+} else {
+    $domainParts = explode('.', $hostOnly);
+    $baseHost = count($domainParts) > 2 ? implode('.', array_slice($domainParts, -2)) : $hostOnly;
+}
+$detectedHost = $baseHost . $portSuffix;
 $protocol     = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 // dirname('/boutique_en_ligne/public/index.php') => '/boutique_en_ligne/public'
 $scriptDir    = dirname($_SERVER['SCRIPT_NAME'] ?? '') ?: '';
 
-define('HOST_NAME', $detectedHost);
+define('HOST_NAME', $baseHost);
 define('BASE_URL', rtrim($protocol . '://' . $detectedHost . rtrim($scriptDir, '/\\'), '/'));
 define('ADMIN_URL', $protocol . '://admin.' . $detectedHost);
 define('APP_NAME', 'CANDYLAND');
